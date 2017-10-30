@@ -1,0 +1,224 @@
+
+
+
+
+Internet Engineering Task Force                                 J. Arkko
+Internet-Draft                                                  Ericsson
+Intended status: Informational                          October 30, 2017
+Expires: May 3, 2018
+
+
+      Tools for the Support of Network Virtualization and Slicing
+            draft-arkko-arch-virtualization-and-slicing-tech
+
+Abstract
+
+   Network virtualization or slicing is network management pertaining to
+   treating different traffic categories in separate virtual networks,
+   with independent resource, technology, and topology choices.  This
+   document reviews IETF technologies that can be useful for network
+   virtualization, such as those in Internet, Routing, and OPS areas.
+
+   An understanding of what current technologies there exist and what
+   they can or cannot do is the first step in developing plans for
+   possible extensions.  Nevertheless, it should be noted from the
+   outset that there is a considerable toolset for at leas some of the
+   tasks associated with virtualization or slicing.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on May 3, 2018.
+
+Copyright Notice
+
+   Copyright (c) 2017 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+
+
+
+Arkko                      Expires May 3, 2018                  [Page 1]
+
+Internet-Draft         Virtualization and Slicing           October 2017
+
+
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Recommendations for Further Work  . . . . . . . . . . . . . .   2
+   3.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   2
+   4.  Informative References  . . . . . . . . . . . . . . . . . . .   2
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   4
+
+1.  Introduction
+
+   Network virtualization or slicing is network management pertaining to
+   treating different traffic categories in separate virtual networks,
+   with independent resource, technology, and topology choices.  This
+   document reviews IETF technologies that can be useful for network
+   virtualization, such as those in Internet, Routing, and OPS areas.
+
+   An understanding of what current technologies there exist and what
+   they can or cannot do is the first step in developing plans for
+   possible extensions.  Nevertheless, it should be noted from the
+   outset that there is a considerable toolset for at least some of the
+   tasks associated with virtualization or slicing.
+
+   ...
+
+2.  Recommendations for Further Work
+
+   ...
+
+3.  Acknowledgements
+
+   The author would like to thank Gonzalo Camarillo, Joel Halpern, Jeff
+   Tantsura, Gabriel Montenegro and many others for interesting
+   discussions in this problem space.
+
+4.  Informative References
+
+   [I-D.flinck-slicing-management]
+              Flinck, H., Sartori, C., Andriannov, A., Mannweiler, C.,
+              and N. Sprecher, "Network Slicing Management and
+              Orchestration", draft-flinck-slicing-management-00 (work
+              in progress), July 2017.
+
+
+
+Arkko                      Expires May 3, 2018                  [Page 2]
+
+Internet-Draft         Virtualization and Slicing           October 2017
+
+
+   [I-D.galis-netslices-revised-problem-statement]
+              Galis, A., "Network Slicing - Revised Problem Statement",
+              draft-galis-netslices-revised-problem-statement-01 (work
+              in progress), July 2017.
+
+   [I-D.geng-coms-problem-statement]
+              67, 4., Slawomir, S., Qiang, L., Matsushima, S., Galis,
+              A., and L. Contreras, "Problem Statement of Supervised
+              Heterogeneous Network Slicing", draft-geng-coms-problem-
+              statement-00 (work in progress), September 2017.
+
+   [I-D.geng-netslices-architecture]
+              67, 4., Dong, J., Bryant, S., kiran.makhijani@huawei.com,
+              k., Galis, A., Foy, X., and S. Kuklinski, "Network Slicing
+              Architecture", draft-geng-netslices-architecture-02 (work
+              in progress), July 2017.
+
+   [I-D.king-teas-applicability-actn-slicing]
+              King, D. and Y. Lee, "Applicability of Abstraction and
+              Control of Traffic Engineered Networks (ACTN) to Network
+              Slicing", draft-king-teas-applicability-actn-slicing-01
+              (work in progress), July 2017.
+
+   [I-D.netslices-usecases]
+              kiran.makhijani@huawei.com, k., Qin, J., Ravindran, R.,
+              67, 4., Qiang, L., Peng, S., Foy, X., Rahman, A., Galis,
+              A., and G. Fioccola, "Network Slicing Use Cases: Network
+              Customization and Differentiated Services", draft-
+              netslices-usecases-02 (work in progress), October 2017.
+
+   [I-D.qiang-coms-netslicing-information-model]
+              Qiang, L., Galis, A., 67, 4., kiran.makhijani@huawei.com,
+              k., Martinez-Julia, P., and H. Flinck, "Technology
+              Independent Information Model for Network Slicing", draft-
+              qiang-coms-netslicing-information-model-00 (work in
+              progress), September 2017.
+
+   [I-D.qiang-netslices-gap-analysis]
+              Qiang, L., Martinez-Julia, P., 67, 4., Dong, J.,
+              kiran.makhijani@huawei.com, k., Galis, A., Hares, S., and
+              S. Slawomir, "Gap Analysis for Transport Network Slicing",
+              draft-qiang-netslices-gap-analysis-01 (work in progress),
+              July 2017.
+
+   [RFC6824]  Ford, A., Raiciu, C., Handley, M., and O. Bonaventure,
+              "TCP Extensions for Multipath Operation with Multiple
+              Addresses", RFC 6824, DOI 10.17487/RFC6824, January 2013,
+              <https://www.rfc-editor.org/info/rfc6824>.
+
+
+
+Arkko                      Expires May 3, 2018                  [Page 3]
+
+Internet-Draft         Virtualization and Slicing           October 2017
+
+
+Author's Address
+
+   Jari Arkko
+   Ericsson
+   Kauniainen  02700
+   Finland
+
+   Email: jari.arkko@piuha.net
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Arkko                      Expires May 3, 2018                  [Page 4]
