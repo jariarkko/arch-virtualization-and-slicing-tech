@@ -127,12 +127,19 @@ Internet-Draft         Virtualization and Slicing           October 2017
    and traffic to be put on specific networks, which in turn may
    comprise of virtual components.
 
-   For a lot of the cases, there is no need for the protocols to be
-   different in these environments.
+   Other examples of protocols providing helpful techniques include
+   virtual private networking mechanisms or management mechanisms and
+   data models that can assist in setting up and administering
+   virtualized systems.
+
+   An interesting architectural trend is that virtualization and data/
+   software driven networking technologies are driving network
+   architectures where functionality moves towards central entities such
+   as various controllers, path computation servers, and orchestration
+   systems.
 
    This document reviews IETF technologies that can be useful for
-   network virtualization, such as those in Internet, Routing, and OPS
-   areas.
+   network virtualization.
 
    An understanding of what current technologies there exist and what
    they can or cannot do is the first step in developing plans for
@@ -155,13 +162,6 @@ Internet-Draft         Virtualization and Slicing           October 2017
 4.  Informative References
 
    [I-D.flinck-slicing-management]
-              Flinck, H., Sartori, C., Andriannov, A., Mannweiler, C.,
-              and N. Sprecher, "Network Slicing Management and
-              Orchestration", draft-flinck-slicing-management-00 (work
-              in progress), July 2017.
-
-   [I-D.galis-netslices-revised-problem-statement]
-
 
 
 
@@ -170,6 +170,12 @@ Arkko                      Expires May 3, 2018                  [Page 3]
 Internet-Draft         Virtualization and Slicing           October 2017
 
 
+              Flinck, H., Sartori, C., Andriannov, A., Mannweiler, C.,
+              and N. Sprecher, "Network Slicing Management and
+              Orchestration", draft-flinck-slicing-management-00 (work
+              in progress), July 2017.
+
+   [I-D.galis-netslices-revised-problem-statement]
               Galis, A., "Network Slicing - Revised Problem Statement",
               draft-galis-netslices-revised-problem-statement-01 (work
               in progress), July 2017.
@@ -213,18 +219,17 @@ Internet-Draft         Virtualization and Slicing           October 2017
               draft-qiang-netslices-gap-analysis-01 (work in progress),
               July 2017.
 
-   [RFC6824]  Ford, A., Raiciu, C., Handley, M., and O. Bonaventure,
-              "TCP Extensions for Multipath Operation with Multiple
-              Addresses", RFC 6824, DOI 10.17487/RFC6824, January 2013,
-              <https://www.rfc-editor.org/info/rfc6824>.
-
-
 
 
 Arkko                      Expires May 3, 2018                  [Page 4]
 
 Internet-Draft         Virtualization and Slicing           October 2017
 
+
+   [RFC6824]  Ford, A., Raiciu, C., Handley, M., and O. Bonaventure,
+              "TCP Extensions for Multipath Operation with Multiple
+              Addresses", RFC 6824, DOI 10.17487/RFC6824, January 2013,
+              <https://www.rfc-editor.org/info/rfc6824>.
 
 Author's Address
 
@@ -234,11 +239,6 @@ Author's Address
    Finland
 
    Email: jari.arkko@piuha.net
-
-
-
-
-
 
 
 

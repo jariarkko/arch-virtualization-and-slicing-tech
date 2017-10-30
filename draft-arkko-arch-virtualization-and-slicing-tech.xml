@@ -113,17 +113,25 @@
       
       <t>For instance, many underlying technologies enable
       virtualization at hardware or physical networking level. For
-      instance, Ethernet networks have Virtual LAN (VLAN) tags and mobile networks
-      have a choice of Access Point Names (APNs). These techniques
-      allow users and traffic to be put on specific networks, which in
-      turn may comprise of virtual components.</t>
+      instance, Ethernet networks have Virtual LAN (VLAN) tags and
+      mobile networks have a choice of Access Point Names
+      (APNs). These techniques allow users and traffic to be put on
+      specific networks, which in turn may comprise of virtual
+      components.</t>
 
-      <t>For a lot of the cases, there is no need for the protocols
-      to be different in these environments. </t>
+      <t>Other examples of protocols providing helpful techniques
+      include virtual private networking mechanisms or management
+      mechanisms and data models that can assist in setting up and
+      administering virtualized systems.</t>
+
+      <t>An interesting architectural trend is that virtualization and 
+      data/software driven networking technologies are driving
+      network architectures where functionality moves towards
+      central entities such as various controllers, path computation
+      servers, and orchestration systems.</t>
       
-      <t>This document reviews IETF technologies
-      that can be useful for network virtualization, such as those
-      in Internet, Routing, and OPS areas.</t>
+      <t>This document reviews IETF technologies that can be useful
+      for network virtualization.</t>
 
       <t>An understanding of what current technologies there exist and
       what they can or cannot do is the first step in developing
