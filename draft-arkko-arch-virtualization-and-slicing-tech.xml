@@ -70,10 +70,58 @@
 
     <section title="Introduction">
 
-      <t>Network virtualization or slicing is network management
+      <t>Network virtualization is network management
       pertaining to treating different traffic categories in separate
       virtual networks, with independent resource, technology, and
-      topology choices. This document reviews IETF technologies
+      topology choices. Network function virtualization is defined
+      in Wikipedia as follows:<list style="empty">
+
+      <t>"Network function virtualization or NFV is a network architecture
+      concept that uses the technologies of IT virtualization to
+      virtualize entire classes of network node functions into
+      building blocks that may connect, or chain together, to create
+      communication services.</t>
+
+      <t>NFV relies upon, but differs from, traditional server-virtualization
+      techniques, such as those used in enterprise IT. A virtualized network
+      function, or VNF, may consist of one or more virtual machines running
+      different software and processes, on top of standard high-volume
+      servers, switches and storage devices, or even cloud computing
+      infrastructure, instead of having custom hardware appliances for each
+      network function."</t></list></t>
+
+      <t>The related term slicing has been used to describe a
+      virtualization concept in planned 5G networks.</t>
+
+      <t>Many of the necessary tools for using virtualization
+      are software, e.g., tools that enable running processes or
+      entire machines in a virtual environment decoupled from physical
+      machines and isolated from each other, virtual switches that
+      connect systems together, management tools to set up virtual
+      environments, and so on. From a communications perspective these
+      tools operate largely in the same fashion as their real-world
+      counterparts do, except that there may not be wires or other
+      physical communication channels, and that connections can be
+      made in the desired fashion.</t>
+
+      <t>In general, there is no reason for protocols to change just
+      because a function or a connection exists on a virtual platform.
+      However, sometimes there are useful underlying
+      technologies that facilitiate connection to virtualized systems,
+      or optimised or additional tools that are needed in the the
+      virtualized environment.</t>
+      
+      <t>For instance, many underlying technologies enable
+      virtualization at hardware or physical networking level. For
+      instance, Ethernet networks have Virtual LAN (VLAN) tags and mobile networks
+      have a choice of Access Point Names (APNs). These techniques
+      allow users and traffic to be put on specific networks, which in
+      turn may comprise of virtual components.</t>
+
+      <t>For a lot of the cases, there is no need for the protocols
+      to be different in these environments. </t>
+      
+      <t>This document reviews IETF technologies
       that can be useful for network virtualization, such as those
       in Internet, Routing, and OPS areas.</t>
 
