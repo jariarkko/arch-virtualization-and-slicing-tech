@@ -13,12 +13,11 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="info" docName="draft-arkko-arch-virtualization-and-slicing-tech" ipr="trust200902">
+<rfc category="info" docName="draft-arkko-arch-virtualization" ipr="trust200902">
 
   <front>
 
-    <title abbrev="Virtualization and Slicing">Tools for the Support
-    of Network Virtualization and Slicing</title>
+    <title abbrev="Network Virtualization">Considerations on Network Virtualization and Slicing</title>
 
     <author fullname="Jari Arkko" initials="J." 
             surname="Arkko">
@@ -50,18 +49,18 @@
 
     <abstract>
 
-      <t>Network virtualization or slicing is network management
+      <t>Network virtualization is network management
       pertaining to treating different traffic categories in separate
       virtual networks, with independent resource, technology, and
-      topology choices. This document reviews IETF technologies
-      that can be useful for network virtualization, such as those
-      in Internet, Routing, and OPS areas.</t>
+      topology choices.</t>
 
-      <t>An understanding of what current technologies there exist and
-      what they can or cannot do is the first step in developing
-      plans for possible extensions. Nevertheless, it should be
-      noted from the outset that there is a considerable toolset for
-      at leas some of the tasks associated with virtualization or slicing.</t>
+      <t>This document makes some observations on the effects
+      virtualization on Internet architecture.  A further revision of
+      this document will also provide a summary of IETF technologies
+      that relate to network virtualization.  An understanding of what
+      current technologies there exist and what they can or cannot do
+      is the first step in developing plans for possible
+      extensions.</t>
 
     </abstract>
   </front>
@@ -73,7 +72,23 @@
       <t>Network virtualization is network management
       pertaining to treating different traffic categories in separate
       virtual networks, with independent resource, technology, and
-      topology choices. Network function virtualization is defined
+      topology choices.</t>
+
+      <t>This document makes some observations on the effects
+      virtualization on Internet architecture.
+
+      <list style="empty"><t>A further revision of
+      this document will also provide a summary of IETF technologies
+      that relate to network virtualization.  An understanding of what
+      current technologies there exist and what they can or cannot do
+      is the first step in developing plans for possible
+      extensions.</t></list></t>
+
+    </section>
+
+    <section title="Definitions">
+      
+      <t>Network function virtualization is defined
       in Wikipedia as follows:<list style="empty">
 
       <t>"Network function virtualization or NFV is a network architecture
@@ -91,68 +106,88 @@
       network function."</t></list></t>
 
       <t>The related term slicing has been used to describe a
-      virtualization concept in planned 5G networks.</t>
-
-      <t>Many of the necessary tools for using virtualization
-      are software, e.g., tools that enable running processes or
-      entire machines in a virtual environment decoupled from physical
-      machines and isolated from each other, virtual switches that
-      connect systems together, management tools to set up virtual
-      environments, and so on. From a communications perspective these
-      tools operate largely in the same fashion as their real-world
-      counterparts do, except that there may not be wires or other
-      physical communication channels, and that connections can be
-      made in the desired fashion.</t>
-
-      <t>In general, there is no reason for protocols to change just
-      because a function or a connection exists on a virtual platform.
-      However, sometimes there are useful underlying
-      technologies that facilitiate connection to virtualized systems,
-      or optimised or additional tools that are needed in the the
-      virtualized environment.</t>
-      
-      <t>For instance, many underlying technologies enable
-      virtualization at hardware or physical networking level. For
-      instance, Ethernet networks have Virtual LAN (VLAN) tags and
-      mobile networks have a choice of Access Point Names
-      (APNs). These techniques allow users and traffic to be put on
-      specific networks, which in turn may comprise of virtual
-      components.</t>
-
-      <t>Other examples of protocols providing helpful techniques
-      include virtual private networking mechanisms or management
-      mechanisms and data models that can assist in setting up and
-      administering virtualized systems.</t>
-
-      <t>An interesting architectural trend is that virtualization and 
-      data/software driven networking technologies are driving
-      network architectures where functionality moves towards
-      central entities such as various controllers, path computation
-      servers, and orchestration systems.</t>
-      
-      <t>This document reviews IETF technologies that can be useful
-      for network virtualization.</t>
-
-      <t>An understanding of what current technologies there exist and
-      what they can or cannot do is the first step in developing
-      plans for possible extensions. Nevertheless, it should be
-      noted from the outset that there is a considerable toolset for
-      at least some of the tasks associated with virtualization or slicing.</t>
-
-      <t>...</t>
+      virtualization concept in planned 5G networks. The 3GPP
+      architecture specification <xref target="TS-3GPP.23.501"/>
+      defines network slices as having potentially different
+      "supported features and network functions optimisations", and
+      spanning functions from core network to radio access
+      networks.</t>
 
     </section>
 
-    <section title="Recommendations for Further Work">
+    <section title="Observations">
 
-	<t>...</t>
+      <t><list style="hanging">
+	
+	<t hangText="Software vs. Protocols"><vspace blankLines="1"/>
+
+	Many of the necessary tools for using virtualization
+	are software, e.g., tools that enable running processes or
+	entire machines in a virtual environment decoupled from physical
+	machines and isolated from each other, virtual switches that
+	connect systems together, management tools to set up virtual
+	environments, and so on. From a communications perspective these
+	tools operate largely in the same fashion as their real-world
+	counterparts do, except that there may not be wires or other
+	physical communication channels, and that connections can be
+	made in the desired fashion. <vspace blankLines="1"/>
+	
+	In general, there is no reason for protocols to change just
+	because a function or a connection exists on a virtual platform.
+	However, sometimes there are useful underlying
+	technologies that facilitiate connection to virtualized systems,
+	or optimised or additional tools that are needed in the the
+	virtualized environment. <vspace blankLines="1"/>
+      
+	For instance, many underlying technologies enable
+	virtualization at hardware or physical networking level. For
+	instance, Ethernet networks have Virtual LAN (VLAN) tags and
+	mobile networks have a choice of Access Point Names
+	(APNs). These techniques allow users and traffic to be put on
+	specific networks, which in turn may comprise of virtual
+	components. <vspace blankLines="1"/>
+	
+	Other examples of protocols providing helpful techniques
+	include virtual private networking mechanisms or management
+	mechanisms and data models that can assist in setting up and
+	administering virtualized systems.</t>
+	
+	<t hangText="Centralization of Functions"><vspace blankLines="1"/>
+
+	An interesting architectural trend is that virtualization and 
+	data/software driven networking technologies are driving
+	network architectures where functionality moves towards
+	central entities such as various controllers, path computation
+	servers, and orchestration systems. <vspace blankLines="1"/>
+
+	A natural consequence of this is the simplification (and
+	perhaps commoditization) of network elements, while the
+	"intelligent" or higher value functions migrate to the
+	center.  <vspace blankLines="1"/>
+
+	The benefits are largely in the manageability, control,
+	and speed of change. There are, however, potential
+	pitfalls to be aware of as well. First off, networks
+	need to continue to be operate even under partial
+	connectivity situations and breakage, and it is key that
+	designs can handle those situations as well. And
+	it is important that network users and peers
+	continue to be able to operate and connect in
+	the way that best suits them.</t>
+      
+	<t hangText="Tailored vs. general-purpose networking"><vspace blankLines="1"/>
+
+	</t>
+	
+      </list></t>
 
     </section>
 
     <section anchor="ack" title="Acknowledgements">
 
       <t>The author would like to thank Gonzalo Camarillo, Joel Halpern, Jeff
-      Tantsura, Gabriel Montenegro and many others for interesting
+      Tantsura, Gabriel Montenegro, Alex Galis, Adrian Farrell, Yi
+      Zhao, Hannu Flinck, and many others for interesting
       discussions in this problem space.</t>
 
     </section>
@@ -172,6 +207,19 @@
      <?rfc include="reference.I-D.netslices-usecases"?>
      <?rfc include="reference.I-D.qiang-netslices-gap-analysis"?>
      <?rfc include="reference.I-D.flinck-slicing-management"?>
+      <reference anchor="TS-3GPP.23.501">
+	<front>
+	  <title>3rd Generation Partnership Project;
+Technical Specification Group Services and System Aspects;
+System Architecture for the 5G System;
+Stage 2 (Release 15)</title>
+	  <author>
+	    <organization>3GPP</organization>
+	  </author>
+	  <date month="July" year="2017" />
+	</front>
+	<seriesInfo name="3GPP" value="Technical Specification 23.501" />
+      </reference>
     </references>
 
   </back>
