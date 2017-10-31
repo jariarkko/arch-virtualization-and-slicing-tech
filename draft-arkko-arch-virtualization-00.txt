@@ -1,0 +1,280 @@
+
+
+
+
+Internet Engineering Task Force                                 J. Arkko
+Internet-Draft                                                  Ericsson
+Intended status: Informational                          October 31, 2017
+Expires: May 4, 2018
+
+
+          Considerations on Network Virtualization and Slicing
+                    draft-arkko-arch-virtualization-00.txt
+
+Abstract
+
+   Network virtualization is network management pertaining to treating
+   different traffic categories in separate virtual networks, with
+   independent resource, technology, and topology choices.
+
+   This document makes some observations on the effects virtualization
+   on Internet architecture.  A further revision of this document will
+   also provide a summary of IETF technologies that relate to network
+   virtualization.  An understanding of what current technologies there
+   exist and what they can or cannot do is the first step in developing
+   plans for possible extensions.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on May 4, 2018.
+
+Copyright Notice
+
+   Copyright (c) 2017 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+
+
+
+Arkko                      Expires May 4, 2018                  [Page 1]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   2
+   3.  Observations  . . . . . . . . . . . . . . . . . . . . . . . .   3
+   4.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   4
+   5.  Informative References  . . . . . . . . . . . . . . . . . . .   4
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
+
+1.  Introduction
+
+   Network virtualization is network management pertaining to treating
+   different traffic categories in separate virtual networks, with
+   independent resource, technology, and topology choices.
+
+   This document makes some observations on the effects virtualization
+   on Internet architecture.
+
+   A further revision of this document will also provide a summary of
+   IETF technologies that relate to network virtualization.  An
+   understanding of what current technologies there exist and what they
+   can or cannot do is the first step in developing plans for possible
+   extensions.
+
+2.  Definitions
+
+   Network function virtualization is defined in Wikipedia as follows:
+
+      "Network function virtualization or NFV is a network architecture
+      concept that uses the technologies of IT virtualization to
+      virtualize entire classes of network node functions into building
+      blocks that may connect, or chain together, to create
+      communication services.
+
+      NFV relies upon, but differs from, traditional server-
+      virtualization techniques, such as those used in enterprise IT.  A
+      virtualized network function, or VNF, may consist of one or more
+      virtual machines running different software and processes, on top
+      of standard high-volume servers, switches and storage devices, or
+      even cloud computing infrastructure, instead of having custom
+      hardware appliances for each network function."
+
+
+
+
+Arkko                      Expires May 4, 2018                  [Page 2]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
+   The related term slicing has been used to describe a virtualization
+   concept in planned 5G networks.  The 3GPP architecture specification
+   [TS-3GPP.23.501] defines network slices as having potentially
+   different "supported features and network functions optimisations",
+   and spanning functions from core network to radio access networks.
+
+   [I-D.king-teas-applicability-actn-slicing] defined slicing as "an
+   approach to network operations that builds on the concept of network
+   abstraction to provide programmability, flexibility, and modularity.
+   It may use techniques such as Software Defined Networking (SDN) and
+   Network Function Virtualization (NFV) to create multiple logical
+   (virtual) networks, each tailored for a set of services that are
+   sharing the same set of requirements, on top of a common network.
+
+3.  Observations
+
+   Software vs. Protocols
+
+      Many of the necessary tools for using virtualization are software,
+      e.g., tools that enable running processes or entire machines in a
+      virtual environment decoupled from physical machines and isolated
+      from each other, virtual switches that connect systems together,
+      management tools to set up virtual environments, and so on.  From
+      a communications perspective these tools operate largely in the
+      same fashion as their real-world counterparts do, except that
+      there may not be wires or other physical communication channels,
+      and that connections can be made in the desired fashion.
+
+      In general, there is no reason for protocols to change just
+      because a function or a connection exists on a virtual platform.
+      However, sometimes there are useful underlying technologies that
+      facilitiate connection to virtualized systems, or optimised or
+      additional tools that are needed in the the virtualized
+      environment.
+
+      For instance, many underlying technologies enable virtualization
+      at hardware or physical networking level.  For instance, Ethernet
+      networks have Virtual LAN (VLAN) tags and mobile networks have a
+      choice of Access Point Names (APNs).  These techniques allow users
+      and traffic to be put on specific networks, which in turn may
+      comprise of virtual components.
+
+      Other examples of protocols providing helpful techniques include
+      virtual private networking mechanisms or management mechanisms and
+      data models that can assist in setting up and administering
+      virtualized systems.
+
+   Centralization of Functions
+
+
+
+Arkko                      Expires May 4, 2018                  [Page 3]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
+      An interesting architectural trend is that virtualization and data
+      /software driven networking technologies are driving network
+      architectures where functionality moves towards central entities
+      such as various controllers, path computation servers, and
+      orchestration systems.
+
+      A natural consequence of this is the simplification (and perhaps
+      commoditization) of network elements, while the "intelligent" or
+      higher value functions migrate to the center.
+
+      The benefits are largely in the manageability, control, and speed
+      of change.  There are, however, potential pitfalls to be aware of
+      as well.  First off, networks need to continue to be operate even
+      under partial connectivity situations and breakage, and it is key
+      that designs can handle those situations as well.  And it is
+      important that network users and peers continue to be able to
+      operate and connect in the way that best suits them.
+
+   Tailored vs. general-purpose networking
+
+      The interest in building tailored solutions, tailored Quality-of-
+      Service offerings vs. building general-purpose "low touch"
+      networks seems to fluctuate over time.
+
+      It is important to find the right balance here.  From an economics
+      perspective, it may not be feasible to provide specialised service
+      -- at least if it requires human effort -- for large fraction of
+      use cases.  Even if those are very useful in critical
+      applications.
+
+4.  Acknowledgements
+
+   The author would like to thank Gonzalo Camarillo, Joel Halpern, Jeff
+   Tantsura, Gabriel Montenegro, Alex Galis, Adrian Farrell, Yi Zhao,
+   Hannu Flinck, and many others for interesting discussions in this
+   problem space.
+
+5.  Informative References
+
+   [CC2015]   claffy, kc. and D. Clark, "Adding Enhanced Services to the
+              Internet: Lessons from History", September 2015 (https://
+              www.caida.org/publications/papers/2015/
+              adding_enhanced_services_internet/
+              adding_enhanced_services_internet.pdf).
+
+   [I-D.king-teas-applicability-actn-slicing]
+              King, D. and Y. Lee, "Applicability of Abstraction and
+              Control of Traffic Engineered Networks (ACTN) to Network
+
+
+
+Arkko                      Expires May 4, 2018                  [Page 4]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
+              Slicing", draft-king-teas-applicability-actn-slicing-01
+              (work in progress), July 2017.
+
+   [TS-3GPP.23.501]
+              3GPP, "3rd Generation Partnership Project; Technical
+              Specification Group Services and System Aspects; System
+              Architecture for the 5G System; Stage 2 (Release 15)",
+              3GPP Technical Specification 23.501, July 2017.
+
+Author's Address
+
+   Jari Arkko
+   Ericsson
+   Kauniainen  02700
+   Finland
+
+   Email: jari.arkko@piuha.net
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Arkko                      Expires May 4, 2018                  [Page 5]
