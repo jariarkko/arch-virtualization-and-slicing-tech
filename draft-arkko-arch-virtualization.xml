@@ -200,6 +200,79 @@
 
     </section>
 
+    <section anchor="furtherwork" title="Further Work">
+
+      <t>There may be needs for further work in this area at the
+      IETF. Before discussing the specific needs, it may be useful to
+      classify the types of useful work that might come to
+      question. And perhaps also outline some types of work that
+      is not appropriate for the IETF.</t>
+
+      <t>The IETF works primarily on protocols, but in many cases also
+      with data models that help manage systems, as well as
+      operational guidance documents. But the IETF does not work on
+      software, such as abstractions that only need to exist inside
+      computers or ones that do not have an effect on protocols either
+      on real or simulated "wires".</t>
+
+      <t>The IETF also does not generally work on system-level
+      design. IETF is best at designing components, not putting those
+      components together to achieve a particular purpose or build a
+      specific application.</t>
+
+      <t>As a result, IETF's work on new systems employing
+      virtualization techniques (such as 5G slicing concept) is more
+      at the component improvement level than at the level of the
+      concept.  There needs to be a mapping between a vision of a
+      system and how it utilizes various software, hardware, and
+      protocol tools to achieve the particular virtualization
+      capabilities it needs to. Developing a new concept does not
+      necessarily mean that entirely new solutions are needed
+      throughtout the stack. Indeed, systems and concepts are usually
+      built on top of solid, well defined components such as the ones
+      produced by the IETF.</t>
+
+      <t>That mapping work is necessarily something that those who
+      want to achieve some new functionality need to do; it is
+      difficult for others to take a position on what the new
+      functionality is. But at the same time, IETF working groups
+      and participants  typically have a perspective on how their
+      technology should develop and be extended. Those two viewpoints
+      must meet.</t>
+
+      <t>The kinds of potential new work in this space falls generally
+      in the following classes:
+
+      <list style="hanging">
+
+	<t hangText="Virtualization selectors"><vspace blankLines="1"/>
+
+	Sometimes protocols need mechanisms that make it possible to
+	use them as multiple instances. E.g., VLAN tags were added to
+	Ethernet frames, NAIs were added to PPP and EAP, and so on.
+	These cases are rare today, because most protocols and
+	mechanisms have some kind of selector that can be used to
+	run multiple instances or connect to multiple different networks.</t>
+	
+	<t hangText="Traffic engineering"><vspace blankLines="1"/>
+
+	A big reason for building specific networks for specific
+	purposes is to provide an engineered service level on delay
+	and other factors to the given customer. There are a number of
+	different tools in the IETF to help manage and engineer
+	networks, but it is also an area that continues to develop and
+	will likely see new functionality.</t>
+	
+	<t hangText="Virtual service data models"><vspace blankLines="1"/>
+
+	Data models -- such as those described by L2SM or L3SM working
+	groups can represent a "service" offered by a network, a
+	setup built for a specific customer or purpose. </t>
+	
+      </list></t>
+      
+    </section>
+    
     <section anchor="ack" title="Acknowledgements">
 
       <t>The author would like to thank Gonzalo Camarillo, Joel Halpern, Jeff
