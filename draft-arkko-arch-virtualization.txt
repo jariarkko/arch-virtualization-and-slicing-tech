@@ -4,8 +4,8 @@
 
 Internet Engineering Task Force                                 J. Arkko
 Internet-Draft                                                  Ericsson
-Intended status: Informational                          October 31, 2017
-Expires: May 4, 2018
+Intended status: Informational                              October 2017
+Expires: April 4, 2018
 
 
           Considerations on Network Virtualization and Slicing
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 4, 2018.
+   This Internet-Draft will expire on April 4, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Arkko                      Expires May 4, 2018                  [Page 1]
+Arkko                     Expires April 4, 2018                 [Page 1]
 
 Internet-Draft           Network Virtualization             October 2017
 
@@ -69,9 +69,10 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   2
    3.  Observations  . . . . . . . . . . . . . . . . . . . . . . . .   3
-   4.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   4
-   5.  Informative References  . . . . . . . . . . . . . . . . . . .   4
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
+   4.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .   4
+   5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
+   6.  Informative References  . . . . . . . . . . . . . . . . . . .   6
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
 
@@ -108,8 +109,7 @@ Table of Contents
 
 
 
-
-Arkko                      Expires May 4, 2018                  [Page 2]
+Arkko                     Expires April 4, 2018                 [Page 2]
 
 Internet-Draft           Network Virtualization             October 2017
 
@@ -165,7 +165,7 @@ Internet-Draft           Network Virtualization             October 2017
 
 
 
-Arkko                      Expires May 4, 2018                  [Page 3]
+Arkko                     Expires April 4, 2018                 [Page 3]
 
 Internet-Draft           Network Virtualization             October 2017
 
@@ -200,14 +200,94 @@ Internet-Draft           Network Virtualization             October 2017
       use cases.  Even if those are very useful in critical
       applications.
 
-4.  Acknowledgements
+4.  Further Work
+
+   There may be needs for further work in this area at the IETF.  Before
+   discussing the specific needs, it may be useful to classify the types
+   of useful work that might come to question.  And perhaps also outline
+   some types of work that is not appropriate for the IETF.
+
+   The IETF works primarily on protocols, but in many cases also with
+   data models that help manage systems, as well as operational guidance
+   documents.  But the IETF does not work on software, such as
+   abstractions that only need to exist inside computers or ones that do
+   not have an effect on protocols either on real or simulated "wires".
+
+   The IETF also does not generally work on system-level design.  IETF
+   is best at designing components, not putting those components
+   together to achieve a particular purpose or build a specific
+   application.
+
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 4]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
+   As a result, IETF's work on new systems employing virtualization
+   techniques (such as 5G slicing concept) is more at the component
+   improvement level than at the level of the concept.  There needs to
+   be a mapping between a vision of a system and how it utilizes various
+   software, hardware, and protocol tools to achieve the particular
+   virtualization capabilities it needs to.  Developing a new concept
+   does not necessarily mean that entirely new solutions are needed
+   throughtout the stack.  Indeed, systems and concepts are usually
+   built on top of solid, well defined components such as the ones
+   produced by the IETF.
+
+   That mapping work is necessarily something that those who want to
+   achieve some new functionality need to do; it is difficult for others
+   to take a position on what the new functionality is.  But at the same
+   time, IETF working groups and participants typically have a
+   perspective on how their technology should develop and be extended.
+   Those two viewpoints must meet.
+
+   The kinds of potential new work in this space falls generally in the
+   following classes:
+
+   Virtualization selectors
+
+      Sometimes protocols need mechanisms that make it possible to use
+      them as multiple instances.  E.g., VLAN tags were added to
+      Ethernet frames, NAIs were added to PPP and EAP, and so on.  These
+      cases are rare today, because most protocols and mechanisms have
+      some kind of selector that can be used to run multiple instances
+      or connect to multiple different networks.
+
+   Traffic engineering
+
+      A big reason for building specific networks for specific purposes
+      is to provide an engineered service level on delay and other
+      factors to the given customer.  There are a number of different
+      tools in the IETF to help manage and engineer networks, but it is
+      also an area that continues to develop and will likely see new
+      functionality.
+
+   Virtual service data models
+
+      Data models -- such as those described by L2SM or L3SM working
+      groups can represent a "service" offered by a network, a setup
+      built for a specific customer or purpose.
+
+5.  Acknowledgements
+
+
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 5]
+
+Internet-Draft           Network Virtualization             October 2017
+
 
    The author would like to thank Gonzalo Camarillo, Joel Halpern, Jeff
    Tantsura, Gabriel Montenegro, Alex Galis, Adrian Farrell, Yi Zhao,
    Hannu Flinck, and many others for interesting discussions in this
    problem space.
 
-5.  Informative References
+6.  Informative References
 
    [CC2015]   claffy, kc. and D. Clark, "Adding Enhanced Services to the
               Internet: Lessons from History", September 2015 (https://
@@ -218,14 +298,6 @@ Internet-Draft           Network Virtualization             October 2017
    [I-D.king-teas-applicability-actn-slicing]
               King, D. and Y. Lee, "Applicability of Abstraction and
               Control of Traffic Engineered Networks (ACTN) to Network
-
-
-
-Arkko                      Expires May 4, 2018                  [Page 4]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
               Slicing", draft-king-teas-applicability-actn-slicing-01
               (work in progress), July 2017.
 
@@ -261,20 +333,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Arkko                      Expires May 4, 2018                  [Page 5]
+Arkko                     Expires April 4, 2018                 [Page 6]
