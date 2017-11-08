@@ -67,14 +67,19 @@ Internet-Draft           Network Virtualization             October 2017
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  General Observations  . . . . . . . . . . . . . . . . . . . .   3
    4.  Overview of IETF Virtualization Technologies  . . . . . . . .   4
-   5.  Architectural Observations  . . . . . . . . . . . . . . . . .   4
-   6.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .   5
-   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   6
-   8.  Informative References  . . . . . . . . . . . . . . . . . . .   6
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
+     4.1.  Lower layers  . . . . . . . . . . . . . . . . . . . . . .   5
+     4.2.  Traffic Separation in VPNs  . . . . . . . . . . . . . . .   5
+     4.3.  Traffic Engineering and QoS . . . . . . . . . . . . . . .   5
+     4.4.  Service Chaining  . . . . . . . . . . . . . . . . . . . .   6
+     4.5.  Management Frameworks and Data Models . . . . . . . . . .   6
+   5.  Architectural Observations  . . . . . . . . . . . . . . . . .   6
+   6.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .   7
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   8
+   8.  Informative References  . . . . . . . . . . . . . . . . . . .   8
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
 
@@ -101,11 +106,6 @@ Table of Contents
    run all this top of virtualized operating system and software-based
    switches.  As new needs are being recognised in the developing
    virtualization technology, what should drive the work is the need for
-   specific capabilities rather than the need to distinghuish a
-   particular term from another term.
-
-2.  Definitions
-
 
 
 
@@ -113,6 +113,11 @@ Arkko                     Expires April 4, 2018                 [Page 2]
 
 Internet-Draft           Network Virtualization             October 2017
 
+
+   specific capabilities rather than the need to distinghuish a
+   particular term from another term.
+
+2.  Definitions
 
    Network function virtualization is defined in Wikipedia as follows:
 
@@ -158,11 +163,6 @@ Internet-Draft           Network Virtualization             October 2017
       there may not be wires or other physical communication channels,
       and that connections can be made in the desired fashion.
 
-      In general, there is no reason for protocols to change just
-      because a function or a connection exists on a virtual platform.
-      However, sometimes there are useful underlying technologies that
-      facilitiate connection to virtualized systems, or optimised or
-
 
 
 Arkko                     Expires April 4, 2018                 [Page 3]
@@ -170,6 +170,10 @@ Arkko                     Expires April 4, 2018                 [Page 3]
 Internet-Draft           Network Virtualization             October 2017
 
 
+      In general, there is no reason for protocols to change just
+      because a function or a connection exists on a virtual platform.
+      However, sometimes there are useful underlying technologies that
+      facilitiate connection to virtualized systems, or optimised or
       additional tools that are needed in the the virtualized
       environment.
 
@@ -187,11 +191,119 @@ Internet-Draft           Network Virtualization             October 2017
 
 4.  Overview of IETF Virtualization Technologies
 
-   ... general networking is largely agnostic to virtualization ...
+   General networking protocols are largely agnostic to virtualization.
+   TCP/IP does not care whether it runs on a physical wire or on a
+   computer-created connection between virtual devices.
+
+   As a result, virtualization generally does not affect TCP/IP itself
+   or applications running on top.  There are some exceptions, though,
+   such as when the need to virtualize has caused previously held
+   assumptions to break, and the Internet community has had to provide
+   new solutions.  For instance, early versions of the HTTP protocol
+   assumed a single host served a single website.  The advent of virtual
+   hosting and pressure to not use large numbers of IPv4 addresses lead
+   to HTTP 1.1 adopting virtual hosting, where the identified web host
+   is indicated inside the HTTP protocol rather than inferred from the
+   reception of a request at particular IP address [VirtualHosting]
+   [RFC2616].
+
+   But where virtualization affects the Internet architecture and
+   implementations is at lower layers, the physical and MAC layers, the
+   systems that deal with the delivery of IP packets to the right
+   destination, management frameworks controlling these systems, and
+   data models designed to help the creation, monitoring, or management
+   of virtualized services.
+
+   What follows is an overview of existing technologies and technologies
+   currently under development that support virtualization in its
+   various forms.
+
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 4]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
+4.1.  Lower layers
+
+   Technologies for that assist separation and engineering of networks
+   at L2 ... client and tunnel identification, AAA, EAP, IKEv2 ...
+
+4.2.  Traffic Separation in VPNs
+
+   Technologies for that assist separation and engineering of networks:
+   ... provider-based VPNs ... GRE and other tunnels ... secure tunnels
+   ... MPLS ... segment routing ...
+
+4.3.  Traffic Engineering and QoS
 
    Technologies for that assist separation and engineering of networks:
    ... at L2 ... VPNs ... MPLS ... segment routing ... traffic
    engineering and TEAS ... data models ...
+
+   The TEAS working group works on enhancements to traffic-engineering
+   capabilities for MPLS and GMPLS networks:
+
+      Traffic Engineering (TE) is the term used to refer to techniques
+      that enable operators to control how specific traffic flows are
+      treated within their networks.  TE is applied to packet networks
+      via MPLS TE tunnels and LSPs.  The MPLS-TE control plane was
+      generalized to additionally support non-packet technologies via
+      GMPLS.  RSVP-TE is the signaling protocol used for both MPLS-TE
+      and GMPLS.
+
+      The TEAS WG is responsible for:
+
+      *  Traffic-engineering architectures for generic applicability
+         across packet and non-packet networks.
+
+      *  Definition of protocol-independent metrics and parameters.
+
+      *  Functional specification of extensions for routing (OSPF,
+         ISIS), for path computation (PCE), and RSVP-TE to provide
+         general enablers of traffic-engineering systems.
+
+      *  Definition of control plane mechanisms and extensions to allow
+         the setup and maintenance of TE paths and TE tunnels that span
+         multiple domains and/or switching technologies.
+
+
+
+
+
+
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 5]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
+4.4.  Service Chaining
+
+   The SFC working group has defined the concept of Service Chaining:
+
+      Today, common deployment models have service functions inserted on
+      the data-forwarding path between communicating peers.  Going
+      forward, however, there is a need to move to a different model,
+      where service functions, whether physical or virtualized, are not
+      required to reside on the direct data path and traffic is instead
+      steered through required service functions, wherever they are
+      deployed.
+
+      For a given service, the abstracted view of the required service
+      functions and the order in which they are to be applied is called
+      a Service Function Chain (SFC).  An SFC is instantiated through
+      selection of specific service function instances on specific
+      network nodes to form a service graph: this is called a Service
+      Function Path (SFP).  The service functions may be applied at any
+      layer within the network protocol stack (network layer, transport
+      layer, application layer, etc.).
+
+4.5.  Management Frameworks and Data Models
 
    Management tools: ... data models ...
 
@@ -221,7 +333,7 @@ Internet-Draft           Network Virtualization             October 2017
 
 
 
-Arkko                     Expires April 4, 2018                 [Page 4]
+Arkko                     Expires April 4, 2018                 [Page 6]
 
 Internet-Draft           Network Virtualization             October 2017
 
@@ -277,7 +389,7 @@ Internet-Draft           Network Virtualization             October 2017
 
 
 
-Arkko                     Expires April 4, 2018                 [Page 5]
+Arkko                     Expires April 4, 2018                 [Page 7]
 
 Internet-Draft           Network Virtualization             October 2017
 
@@ -333,10 +445,15 @@ Internet-Draft           Network Virtualization             October 2017
 
 
 
-Arkko                     Expires April 4, 2018                 [Page 6]
+Arkko                     Expires April 4, 2018                 [Page 8]
 
 Internet-Draft           Network Virtualization             October 2017
 
+
+   [I-D.ietf-sfc-nsh]
+              Quinn, P., Elzur, U., and C. Pignataro, "Network Service
+              Header (NSH)", draft-ietf-sfc-nsh-28 (work in progress),
+              November 2017.
 
    [I-D.king-teas-applicability-actn-slicing]
               King, D. and Y. Lee, "Applicability of Abstraction and
@@ -344,11 +461,21 @@ Internet-Draft           Network Virtualization             October 2017
               Slicing", draft-king-teas-applicability-actn-slicing-01
               (work in progress), July 2017.
 
+   [RFC2616]  Fielding, R., Gettys, J., Mogul, J., Frystyk, H.,
+              Masinter, L., Leach, P., and T. Berners-Lee, "Hypertext
+              Transfer Protocol -- HTTP/1.1", RFC 2616, DOI 10.17487/
+              RFC2616, June 1999, <https://www.rfc-editor.org/info/
+              rfc2616>.
+
    [TS-3GPP.23.501]
               3GPP, "3rd Generation Partnership Project; Technical
               Specification Group Services and System Aspects; System
               Architecture for the 5G System; Stage 2 (Release 15)",
               3GPP Technical Specification 23.501, July 2017.
+
+   [VirtualHosting]
+              Wikipedia, "Virtual Hosting", Wikipedia article https://
+              en.wikipedia.org/wiki/Virtual_hosting, August 2017.
 
 Author's Address
 
@@ -374,19 +501,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 7]
+Arkko                     Expires April 4, 2018                 [Page 9]

@@ -178,14 +178,118 @@
 
     <section title="Overview of IETF Virtualization Technologies">
 
-      <t>... general networking is largely agnostic to virtualization
-      ...</t>
-      
-      <t>Technologies for that assist separation and engineering of
-      networks: ... at L2 ... VPNs ... MPLS ... segment routing
-      ... traffic engineering and TEAS ... data models ... </t>
+      <t>General networking protocols are largely agnostic to virtualization.
+      TCP/IP does not care whether it runs on a physical wire or on a
+      computer-created connection between virtual devices.</t>
 
-      <t>Management tools: ... data models ...</t>
+      <t>As a result, virtualization generally does not affect TCP/IP
+      itself or applications running on top. There are some
+      exceptions, though, such as when the need to virtualize has
+      caused previously held assumptions to break, and the Internet
+      community has had to provide new solutions. For instance, early
+      versions of the HTTP protocol assumed a single host served a
+      single website. The advent of virtual hosting and pressure to
+      not use large numbers of IPv4 addresses lead to HTTP 1.1
+      adopting virtual hosting, where the identified web host is
+      indicated inside the HTTP protocol rather than inferred from the
+      reception of a request at particular IP address <xref
+      target="VirtualHosting"/> <xref target="RFC2616"/>.</t>
+
+      <t>But where virtualization affects the Internet architecture
+      and implementations is at lower layers, the physical and MAC
+      layers, the systems that deal with the delivery of IP packets to
+      the right destination, management frameworks controlling
+      these systems, and data models designed to help the creation,
+      monitoring, or management of virtualized services.</t>
+
+      <t>What follows is an overview of existing technologies and
+      technologies currently under development that support
+      virtualization in its various forms.</t>
+
+      <section title="Lower layers">
+
+	<t>Technologies for that assist separation and engineering of
+	networks at L2 ... client and tunnel identification, AAA, EAP,
+	IKEv2 ...</t>
+	
+      </section>
+      
+      <section title="Traffic Separation in VPNs">
+
+	<t>Technologies for that assist separation and engineering of
+	networks: ... provider-based VPNs ... GRE and other tunnels
+	... secure tunnels ... MPLS ... segment routing ... </t>
+	
+      </section>
+      
+      <section title="Traffic Engineering and QoS">
+
+	<t>Technologies for that assist separation and engineering of
+	networks: ... at L2 ... VPNs ... MPLS ... segment routing
+	... traffic engineering and TEAS ... data models ... </t>
+
+	<t>The TEAS working group works on enhancements to
+	traffic-engineering capabilities for MPLS and GMPLS networks:
+	<list style="empty">
+
+	  <t>Traffic Engineering (TE) is the term used to refer to techniques
+	  that enable operators to control how specific traffic flows are
+	  treated within their networks. TE is applied to packet networks
+	  via MPLS TE tunnels and LSPs. The MPLS-TE control plane was
+	  generalized to additionally support non-packet technologies via
+	  GMPLS.  RSVP-TE is the signaling protocol used for both MPLS-TE
+	  and GMPLS.</t>
+
+	  <t>The TEAS WG is responsible for:
+	  <list style="symbols">
+
+	    <t>Traffic-engineering architectures for generic applicability
+	    across packet and non-packet networks.</t>
+
+	    <t>Definition of protocol-independent metrics and parameters.</t>
+
+	    <t>Functional specification of extensions for routing (OSPF,
+	    ISIS), for path computation (PCE), and RSVP-TE to provide general
+	    enablers of traffic-engineering systems.</t>
+	    
+	    <t>Definition of control plane mechanisms and extensions to allow
+	    the setup and maintenance of TE paths and TE tunnels that span
+	    multiple domains and/or switching technologies.</t>
+
+	  </list></t>
+	</list></t>
+	  
+      </section>
+      
+      <section title="Service Chaining">
+	
+	<t>The SFC working group has defined the concept of
+	Service Chaining:
+	<list style="empty">
+	  <t>Today, common deployment models have service functions inserted on
+	  the data-forwarding path between communicating peers. Going forward,
+	  however, there is a need to move to a different model, where service
+	  functions, whether physical or virtualized, are not required to reside on
+	  the direct data path and traffic is instead steered through required
+	  service functions, wherever they are deployed.</t>
+
+	  <t>For a given service, the abstracted view of the required service
+	  functions and the order in which they are to be applied is called a
+	  Service Function Chain (SFC). An SFC is instantiated through selection
+	  of specific service function instances on specific network nodes to form
+	  a service graph: this is called a Service Function Path (SFP). The
+	  service functions may be applied at any layer within the network
+	  protocol stack (network layer, transport layer, application layer,
+	  etc.).</t>
+	</list></t>
+  
+      </section>
+      
+      <section title="Management Frameworks and Data Models">
+
+	<t>Management tools: ... data models ...</t>
+      
+      </section>
       
     </section>
     
@@ -331,7 +435,19 @@
 
     <references title="Informative References">
 
+     <?rfc include="reference.RFC.2616"?>
+     <?rfc include="reference.I-D.ietf-sfc-nsh"?>
      <?rfc include="reference.I-D.king-teas-applicability-actn-slicing"?>
+      <reference anchor="VirtualHosting">
+	<front>
+	  <title>Virtual Hosting</title>
+	  <author>
+	    <organization>Wikipedia</organization>
+	  </author>
+	  <date month="August" year="2017" />
+	</front>
+	<seriesInfo name="Wikipedia" value="article https://en.wikipedia.org/wiki/Virtual_hosting" />
+      </reference>
       <reference anchor="TS-3GPP.23.501">
 	<front>
 	  <title>3rd Generation Partnership Project;
