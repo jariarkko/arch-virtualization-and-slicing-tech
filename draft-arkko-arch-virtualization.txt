@@ -32,7 +32,7 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
@@ -48,7 +48,7 @@ Copyright Notice
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
 
 
@@ -73,13 +73,13 @@ Table of Contents
      4.1.  Lower layers  . . . . . . . . . . . . . . . . . . . . . .   5
      4.2.  Traffic Separation in VPNs  . . . . . . . . . . . . . . .   5
      4.3.  Traffic Engineering and QoS . . . . . . . . . . . . . . .   5
-     4.4.  Service Chaining  . . . . . . . . . . . . . . . . . . . .   6
+     4.4.  Service Chaining  . . . . . . . . . . . . . . . . . . . .   5
      4.5.  Management Frameworks and Data Models . . . . . . . . . .   6
-   5.  Architectural Observations  . . . . . . . . . . . . . . . . .   6
-   6.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .   7
-   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   8
-   8.  Informative References  . . . . . . . . . . . . . . . . . . .   8
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   9
+   5.  Architectural Observations  . . . . . . . . . . . . . . . . .   7
+   6.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .   8
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
+   8.  Informative References  . . . . . . . . . . . . . . . . . . .   9
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
 
@@ -269,9 +269,9 @@ Internet-Draft           Network Virtualization             October 2017
          the setup and maintenance of TE paths and TE tunnels that span
          multiple domains and/or switching technologies.
 
+4.4.  Service Chaining
 
-
-
+   The SFC working group has defined the concept of Service Chaining:
 
 
 
@@ -281,10 +281,6 @@ Arkko                     Expires April 4, 2018                 [Page 5]
 
 Internet-Draft           Network Virtualization             October 2017
 
-
-4.4.  Service Chaining
-
-   The SFC working group has defined the concept of Service Chaining:
 
       Today, common deployment models have service functions inserted on
       the data-forwarding path between communicating peers.  Going
@@ -307,6 +303,60 @@ Internet-Draft           Network Virtualization             October 2017
 
    Management tools: ... data models ...
 
+   There have been two working groups at the IETF, focusing on data
+   models describing VPNs.  The IETF and the industry in general is
+   currently specifying a set of YANG models for network element and
+   protocol configuration [RFC6020].  A service model is an abstract
+   model, at a higher level than network element or protocol
+   configuration.  A service model for VPN service describes a VPN in a
+   manner that a customer of the VPN service would see it.
+
+   It needs to be clearly understood that such a service model is not a
+   configuration model.  That is, it does not provide details for
+   configuring network elements or protocols: that work is expected to
+   be carried out in other protocol-specific working groups.  Instead,
+   service models contain the characteristics of the service as
+   discussed between the operators and their customers.  A separate
+   process is responsible for mapping this customer service model onto
+   the protocols and network elements depending on how the network
+   operator chooses to realise the service.
+
+   The L2SM WG specifies a service model for L2-based VPNs:
+
+      The Layer Two Virtual Private Network Service Model (L2SM) working
+      group is a short-lived WG.  It is tasked to create a YANG data
+      model that describes a L2VPN service (a L2VPN customer service
+      model).  The model can be used for communication between customers
+      and network operators, and to provide input to automated control
+      and configuration applications.
+
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 6]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
+      It is recognized that it would be beneficial to have a common base
+      model that addresses multiple popular L2VPN service types.  The
+      working group derives a single data model that includes support
+      for the following:
+
+      *  point-to-point Virtual Private Wire Services (VPWS),
+
+      *  multipoint Virtual Private LAN services (VPLS) that use LDP-
+         signaled Pseudowires,
+
+      *  multipoint Virtual Private LAN services (VPLS) that use a
+         Border Gateway Protocol (BGP) control plane as described in
+         [RFC4761] and [RFC6624],
+
+      *  Ethernet VPNs specified in [RFC7432].
+
+      Other L2VPN service types may be included if there is consensus in
+      the working group.
+
 5.  Architectural Observations
 
    Role of Software
@@ -315,8 +365,8 @@ Internet-Draft           Network Virtualization             October 2017
 
    Centralization of Functions
 
-      An interesting architectural trend is that virtualization and data
-      /software driven networking technologies are driving network
+      An interesting architectural trend is that virtualization and
+      data/software driven networking technologies are driving network
       architectures where functionality moves towards central entities
       such as various controllers, path computation servers, and
       orchestration systems.
@@ -331,18 +381,19 @@ Internet-Draft           Network Virtualization             October 2017
       under partial connectivity situations and breakage, and it is key
       that designs can handle those situations as well.
 
-
-
-Arkko                     Expires April 4, 2018                 [Page 6]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
       And it is important that network users and peers continue to be
       able to operate and connect in the distributed, voluntary manner
       that we have today.  Today's virtualization technology is
       primarily used to manage single administrative domains and to
       offer specific service to others.  One could imagine centralised
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 7]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
       models being taken too far as well, limiting the ability of other
       network owners to manage their own networks.
 
@@ -387,17 +438,18 @@ Internet-Draft           Network Virtualization             October 2017
    built on top of solid, well defined components such as the ones
    produced by the IETF.
 
-
-
-Arkko                     Expires April 4, 2018                 [Page 7]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
    That mapping work is necessarily something that those who want to
    achieve some new functionality need to do; it is difficult for others
    to take a position on what the new functionality is.  But at the same
    time, IETF working groups and participants typically have a
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 8]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
    perspective on how their technology should develop and be extended.
    Those two viewpoints must meet.
 
@@ -438,14 +490,18 @@ Internet-Draft           Network Virtualization             October 2017
 8.  Informative References
 
    [CC2015]   claffy, kc. and D. Clark, "Adding Enhanced Services to the
-              Internet: Lessons from History", September 2015 (https://
-              www.caida.org/publications/papers/2015/
+              Internet: Lessons from History", September 2015
+              (https://www.caida.org/publications/papers/2015/
               adding_enhanced_services_internet/
               adding_enhanced_services_internet.pdf).
 
 
 
-Arkko                     Expires April 4, 2018                 [Page 8]
+
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 9]
 
 Internet-Draft           Network Virtualization             October 2017
 
@@ -463,9 +519,29 @@ Internet-Draft           Network Virtualization             October 2017
 
    [RFC2616]  Fielding, R., Gettys, J., Mogul, J., Frystyk, H.,
               Masinter, L., Leach, P., and T. Berners-Lee, "Hypertext
-              Transfer Protocol -- HTTP/1.1", RFC 2616, DOI 10.17487/
-              RFC2616, June 1999, <https://www.rfc-editor.org/info/
-              rfc2616>.
+              Transfer Protocol -- HTTP/1.1", RFC 2616,
+              DOI 10.17487/RFC2616, June 1999,
+              <https://www.rfc-editor.org/info/rfc2616>.
+
+   [RFC4761]  Kompella, K., Ed. and Y. Rekhter, Ed., "Virtual Private
+              LAN Service (VPLS) Using BGP for Auto-Discovery and
+              Signaling", RFC 4761, DOI 10.17487/RFC4761, January 2007,
+              <https://www.rfc-editor.org/info/rfc4761>.
+
+   [RFC6020]  Bjorklund, M., Ed., "YANG - A Data Modeling Language for
+              the Network Configuration Protocol (NETCONF)", RFC 6020,
+              DOI 10.17487/RFC6020, October 2010,
+              <https://www.rfc-editor.org/info/rfc6020>.
+
+   [RFC6624]  Kompella, K., Kothari, B., and R. Cherukuri, "Layer 2
+              Virtual Private Networks Using BGP for Auto-Discovery and
+              Signaling", RFC 6624, DOI 10.17487/RFC6624, May 2012,
+              <https://www.rfc-editor.org/info/rfc6624>.
+
+   [RFC7432]  Sajassi, A., Ed., Aggarwal, R., Bitar, N., Isaac, A.,
+              Uttaro, J., Drake, J., and W. Henderickx, "BGP MPLS-Based
+              Ethernet VPN", RFC 7432, DOI 10.17487/RFC7432, February
+              2015, <https://www.rfc-editor.org/info/rfc7432>.
 
    [TS-3GPP.23.501]
               3GPP, "3rd Generation Partnership Project; Technical
@@ -474,8 +550,17 @@ Internet-Draft           Network Virtualization             October 2017
               3GPP Technical Specification 23.501, July 2017.
 
    [VirtualHosting]
-              Wikipedia, "Virtual Hosting", Wikipedia article https://
-              en.wikipedia.org/wiki/Virtual_hosting, August 2017.
+              Wikipedia, "Virtual Hosting", Wikipedia article
+              https://en.wikipedia.org/wiki/Virtual_hosting, August
+              2017.
+
+
+
+
+Arkko                     Expires April 4, 2018                [Page 10]
+
+Internet-Draft           Network Virtualization             October 2017
+
 
 Author's Address
 
@@ -501,4 +586,31 @@ Author's Address
 
 
 
-Arkko                     Expires April 4, 2018                 [Page 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Arkko                     Expires April 4, 2018                [Page 11]

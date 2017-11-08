@@ -288,7 +288,55 @@
       <section title="Management Frameworks and Data Models">
 
 	<t>Management tools: ... data models ...</t>
-      
+
+	<t>There have been two working groups at the IETF, focusing on
+	data models describing VPNs. The IETF and the industry in
+	general is currently specifying a set of YANG models for
+	network element and protocol configuration <xref
+	target="RFC6020"/>. A service model is an abstract model, at a
+	higher level than network element or protocol configuration.
+	A service model for VPN service describes a VPN in a manner
+	that a customer of the VPN service would see it.</t>
+
+	<t>It needs to be clearly understood that such a service model
+	is not a configuration model. That is, it does not provide
+	details for configuring network elements or protocols: that
+	work is expected to be carried out in other protocol-specific
+	working groups. Instead, service models contain the
+	characteristics of the service as discussed between the
+	operators and their customers. A separate process is
+	responsible for mapping this customer service model onto the
+	protocols and network elements depending on how the network
+	operator chooses to realise the service.</t>
+
+	<t>The L2SM WG specifies a service model for L2-based VPNs:
+
+	<list style="empty">
+	  <t>The Layer Two Virtual Private Network Service Model
+	  (L2SM) working group is a short-lived WG. It is tasked to
+	  create a YANG data model that describes a L2VPN service (a
+	  L2VPN customer service model). The model can be used for
+	  communication between customers and network operators, and
+	  to provide input to automated control and configuration
+	  applications.</t>
+	  
+	  <t>It is recognized that it would be beneficial to have a
+	  common base model that addresses multiple popular L2VPN
+	  service types. The working group derives a single data model
+	  that includes support for the following:
+	  <list style="symbols">
+	    <t>point-to-point Virtual Private Wire Services (VPWS),</t>
+	    <t>multipoint Virtual Private LAN services (VPLS) that use LDP-signaled Pseudowires,</t>
+	    <t>multipoint Virtual Private LAN services (VPLS) that use
+	    a Border Gateway Protocol (BGP) control plane as described
+	    in <xref target="RFC4761"/> and <xref target="RFC6624"/>,</t>
+	    <t>Ethernet VPNs specified in <xref target="RFC7432"/>.</t>
+	  </list></t>
+	  
+	  <t>Other L2VPN service types may be included if there is consensus in the working group.</t>
+
+	</list></t>
+	
       </section>
       
     </section>
@@ -436,6 +484,10 @@
     <references title="Informative References">
 
      <?rfc include="reference.RFC.2616"?>
+     <?rfc include="reference.RFC.4761"?>
+     <?rfc include="reference.RFC.6020"?>
+     <?rfc include="reference.RFC.6624"?>
+     <?rfc include="reference.RFC.7432"?>
      <?rfc include="reference.I-D.ietf-sfc-nsh"?>
      <?rfc include="reference.I-D.king-teas-applicability-actn-slicing"?>
       <reference anchor="VirtualHosting">
