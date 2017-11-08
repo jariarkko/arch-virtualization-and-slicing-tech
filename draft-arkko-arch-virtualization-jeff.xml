@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+
+]>
+
+<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+<?rfc strict="yes" ?>
+<?rfc toc="yes"?>
+<?rfc tocdepth="4"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes" ?>
+<?rfc compact="yes" ?>
+<?rfc subcompact="no" ?>
+<rfc category="info" docName="draft-arkko-arch-virtualization" ipr="trust200902">
+
+  <front>
+
+    <title abbrev="Network Virtualization">Considerations on Network Virtualization and Slicing</title>
+
+    <author fullname="Jari Arkko" initials="J." 
+            surname="Arkko">
+      <organization>Ericsson</organization>
+
+      <address>
+        <postal>
+          <street></street>
+
+          <city>Kauniainen</city>
+
+          <region></region>
+
+          <code>02700</code>
+
+          <country>Finland</country>
+        </postal>
+
+        <email>jari.arkko@piuha.net</email>
+
+      </address>
+    </author>
+
+    <date month="October" year="2017" />
+
+    <area>Internet</area>
+
+    <workgroup>Internet Engineering Task Force</workgroup>
+
+    <abstract>
+
+      <t>Network virtualization is network management
+      pertaining to treating different traffic categories in separate
+      virtual networks, with independent lifecycle management and resource, technology, and
+      topology choices.</t>
+
+      <t>This document makes some observations on the effects
+      virtualization on Internet architecture.  A further revision of
+      this document will also provide a summary of IETF technologies
+      that relate to network virtualization.  An understanding of what
+      current technologies there exist and what they can or cannot do
+      is the first step in developing plans for possible
+      extensions.</t>
+
+    </abstract>
+  </front>
+
+  <middle>
+
+    <section title="Introduction">
+
+      <t>Network virtualization is network management
+      pertaining to treating different traffic categories in separate
+      virtual networks, with independent lifecycle management and resource, technology, and
+      topology choices.</t>
+
+      <t>This document makes some observations on the effects
+      virtualization on Internet architecture.</t>
+
+      <t>A further revision of
+      this document will also provide a summary of IETF technologies
+      that relate to network virtualization.  An understanding of what
+      current technologies there exist and what they can or cannot do
+      is the first step in developing plans for possible
+      extensions.</t>
+
+      <t>In particular, whether one calls a particular piece of
+      technology "virtualization", "slicing", "separation", or
+      "network selection" does not matter at the level of a
+      system. Any modern system will use several underlying technology
+      components that may use different terms but provide some
+      separation or management. So, for instance, in a given system
+      you may use VLAN tags in an ethernet segment, MPLS or
+      VPNs across the domain, NAIs to select the right AAA instance,
+      and run all this top of virtualized operating system and
+      software-based switches. As new needs are being recognised in
+      the developing virtualization technology, what should drive the
+      work is the need for specific capabilities rather than the need
+      to distinghuish a particular term from another term.</t>
+    </section>
+
+    <section title="Definitions">
+      
+      <t>Network function virtualization is defined
+      in Wikipedia as follows:<list style="empty">
+
+      <t>"Network function virtualization or NFV is a network architecture
+      concept that uses the technologies of IT virtualization to
+      virtualize entire classes of network node functions into
+      building blocks that may connect, or chain together, to create
+      communication services.</t>
+
+      <t>NFV relies upon, but differs from, traditional server-virtualization
+      techniques, such as those used in enterprise IT. A virtualized network
+      function, or VNF, may consist of one or more virtual machines running
+      different software and processes, on top of standard high-volume
+      servers, switches and storage devices, or even cloud computing
+      infrastructure, instead of having custom hardware appliances for each
+      network function."</t></list></t>
+
+      <t>The related term slicing has been used to describe a
+      virtualization concept in planned 5G networks. The 3GPP
+      architecture specification <xref target="TS-3GPP.23.501"/>
+      defines network slices as having potentially different
+      "supported features and network functions optimisations", and
+      spanning functions from core network to radio access
+      networks.</t>
+
+      <t><xref
+      target="I-D.king-teas-applicability-actn-slicing"/> defined
+      slicing as "an approach to network operations that builds on 
+      the concept of network abstraction to provide programmability, 
+      flexibility, and modularity.  It may use techniques such as Software
+      Defined Networking (SDN) and Network Function Virtualization (NFV)
+      to create multiple logical (virtual) networks, each tailored for a
+      set of services that are sharing the same set of requirements, on 
+      top of a common network.</t>
+
+    </section>
+
+    <section title="General Observations">
+      <t><list style="hanging">
+	
+	<t hangText="Software vs. Protocols"><vspace blankLines="1"/>
+
+	Many of the necessary tools for using virtualization
+	are software, e.g., tools that enable running processes or
+	entire machines in a virtual environment decoupled from physical
+	machines and isolated from each other, virtual switches that
+	connect systems together, management tools to set up virtual
+	environments, and so on. From a communications perspective these
+	tools operate largely in the same fashion as their real-world
+	counterparts do, except that there may not be wires or other
+	physical communication channels, and that connections can be
+	made in the desired fashion. <vspace blankLines="1"/>
+	
+	In general, there is no reason for protocols to change just
+	because a function or a connection exists on a virtual platform.
+	However, sometimes there are useful underlying
+	technologies that facilitiate connection to virtualized systems,
+	or optimised or additional tools that are needed in the the
+	virtualized environment. <vspace blankLines="1"/>
+      
+	For instance, many underlying technologies enable
+	virtualization at hardware or physical networking level. For
+	instance, Ethernet networks have Virtual LAN (VLAN) tags and
+	mobile networks have a choice of Access Point Names
+	(APNs). These techniques allow users and traffic to be put on
+	specific networks, which in turn may comprise of virtual
+	components. <vspace blankLines="1"/>
+	
+	Other examples of protocols providing helpful techniques
+	include virtual private networking mechanisms or management
+	mechanisms and data models that can assist in setting up and
+	administering virtualized systems.</t>
+
+      </list></t>
+      
+    </section>
+
+    <section title="Overview of IETF Virtualization Technologies">
+
+      <t>... general networking is largely agnostic to virtualization
+	      ...</t>
+      <t>We should not confuse NFV and network virtualization, the
+      former, as the name suggests is about functions virtualization,
+      and not the network. </t>
+      
+      <t>The idea of network virtualization is almost as old as the networking technology itself.
+	 Network virtualization is hierarchical and multilayer in its nature, from layer 0 up to services on top. 
+	 When talking about virtualization we usually define overlay to underlay relationship between different layers, bottom up.
+	 A VPN (Virtual Private Network)[RFC4026] is the most common form of network virtualization.
+	 The general benefits and desirability of VPNs have been described many times and in many places ([RFC4110] and [RFC4664])
+	 <vspace blankLines="1"/>
+	 The only immutable infrastructure is the "physical" medium, that could be dedicated or "sliced" to provide services(VPNs) in a multi-tenant environment.
+	 L1VPN[RFC] provides
+	 L2
+	 Tunneling over IP (MPLS, GRE, IPinIP, IPoIP/UDP, L2TP, etc) provide
+	 L2VPN provides
+	 L3VPN provides
+
+      <t>Technologies for that assist separation and engineering of
+      networks: ... at L2 ... VPNs ... MPLS ... segment routing
+      ... traffic engineering and TEAS ... data models ... </t>
+
+      <t>Management tools: ... data models ...</t>
+      
+    </section>
+    
+    <section title="Architectural Observations">
+
+      <t><list style="hanging">
+
+	<t hangText="Role of Software"><vspace blankLines="1"/>
+	...</t>
+	
+	<t hangText="Centralization of Functions"><vspace blankLines="1"/>
+
+	An interesting architectural trend is that virtualization and 
+	data/software driven networking technologies are driving
+	network architectures where functionality moves towards
+	central entities such as various controllers, path computation
+	servers, and orchestration systems. <vspace blankLines="1"/>
+
+	A natural consequence of this is the simplification (and
+	perhaps commoditization) of network elements, while the
+	"intelligent" or higher value functions migrate to the
+	center.   <vspace blankLines="1"/>
+
+	The benefits are largely in the manageability, control,
+	and speed of change. There are, however, potential
+	pitfalls to be aware of as well. First off, networks
+	need to continue to be operate even under partial
+	connectivity situations and breakage, and it is key that
+	designs can handle those situations as well.<vspace
+	blankLines="1"/>
+	
+	And it is important that network users and peers continue to
+	be able to operate and connect in the distributed, voluntary
+	manner that we have today. Today's virtualization technology
+	is primarily used to manage single administrative domains and
+	to offer specific service to others. One could imagine
+	centralised models being taken too far as well, limiting the
+	ability of other network owners to manage their own networks.
+	</t>
+      
+	<t hangText="Tailored vs. general-purpose networking"><vspace blankLines="1"/>
+
+	The interest in building tailored solutions, tailored
+	Quality-of-Service offerings vs. building general-purpose "low
+	touch" networks seems to fluctuate over time. <vspace
+	blankLines="1"/>
+
+	It is important to find the right balance here. From an
+	economics perspective, it may not be feasible to provide
+	specialised service -- at least if it requires human effort --
+	for large fraction of use cases. Even if those are very useful
+	in critical applications.</t>
+	
+      </list></t>
+
+    </section>
+
+    <section anchor="furtherwork" title="Further Work">
+
+      <t>There may be needs for further work in this area at the
+      IETF. Before discussing the specific needs, it may be useful to
+      classify the types of useful work that might come to
+      question. And perhaps also outline some types of work that
+      is not appropriate for the IETF.</t>
+
+      <t>The IETF works primarily on protocols, but in many cases also
+      with data models that help manage systems, as well as
+      operational guidance documents. But the IETF does not work on
+      software, such as abstractions that only need to exist inside
+      computers or ones that do not have an effect on protocols either
+      on real or simulated "wires".</t>
+
+      <t>The IETF also does not generally work on system-level
+      design. IETF is best at designing components, not putting those
+      components together to achieve a particular purpose or build a
+      specific application.</t>
+
+      <t>As a result, IETF's work on new systems employing
+      virtualization techniques (such as 5G slicing concept) is more
+      at the component improvement level than at the level of the
+      concept.  There needs to be a mapping between a vision of a
+      system and how it utilizes various software, hardware, and
+      protocol tools to achieve the particular virtualization
+      capabilities it needs to. Developing a new concept does not
+      necessarily mean that entirely new solutions are needed
+      throughtout the stack. Indeed, systems and concepts are usually
+      built on top of solid, well defined components such as the ones
+      produced by the IETF.</t>
+
+      <t>That mapping work is necessarily something that those who
+      want to achieve some new functionality need to do; it is
+      difficult for others to take a position on what the new
+      functionality is. But at the same time, IETF working groups
+      and participants  typically have a perspective on how their
+      technology should develop and be extended. Those two viewpoints
+      must meet.</t>
+
+      <t>The kinds of potential new work in this space falls generally
+      in the following classes:
+
+      <list style="hanging">
+
+	<t hangText="Virtualization selectors"><vspace blankLines="1"/>
+
+	Sometimes protocols need mechanisms that make it possible to
+	use them as multiple instances. E.g., VLAN tags were added to
+	Ethernet frames, NAIs were added to PPP and EAP, and so on.
+	These cases are rare today, because most protocols and
+	mechanisms have some kind of selector that can be used to
+	run multiple instances or connect to multiple different networks.</t>
+	
+	<t hangText="Traffic engineering"><vspace blankLines="1"/>
+
+	A big reason for building specific networks for specific
+	purposes is to provide an engineered service level on delay
+	and other factors to the given customer. There are a number of
+	different tools in the IETF to help manage and engineer
+	networks, but it is also an area that continues to develop and
+	will likely see new functionality.</t>
+	
+	<t hangText="Virtual service data models"><vspace blankLines="1"/>
+
+	Data models -- such as those described by L2SM or L3SM working
+	groups can represent a "service" offered by a network, a
+	setup built for a specific customer or purpose. </t>
+	
+      </list></t>
+      
+    </section>
+    
+    <section anchor="ack" title="Acknowledgements">
+
+      <t>The author would like to thank Gonzalo Camarillo, Joel Halpern, Jeff
+      Tantsura, Gabriel Montenegro, Alex Galis, Adrian Farrell, Yi
+      Zhao, Hannu Flinck, and many others for interesting
+      discussions in this problem space.</t>
+
+    </section>
+
+  </middle>
+
+  <back>
+
+    <references title="Informative References">
+
+     <?rfc include="reference.I-D.king-teas-applicability-actn-slicing"?>
+      <reference anchor="TS-3GPP.23.501">
+	<front>
+	  <title>3rd Generation Partnership Project;
+Technical Specification Group Services and System Aspects;
+System Architecture for the 5G System;
+Stage 2 (Release 15)</title>
+	  <author>
+	    <organization>3GPP</organization>
+	  </author>
+	  <date month="July" year="2017" />
+	</front>
+	<seriesInfo name="3GPP" value="Technical Specification 23.501" />
+      </reference>
+      <reference anchor="CC2015">
+        <front>
+          <title>Adding Enhanced Services to the Internet: Lessons from History</title>
+          <author initials="kc" surname="claffy"></author>
+          <author initials="D." surname="Clark"></author>
+<date month='September' year='2015 (https://www.caida.org/publications/papers/2015/adding_enhanced_services_internet/adding_enhanced_services_internet.pdf)'/>
+        </front>
+        <format type='PDF'
+		target='https://www.caida.org/publications/papers/2015/adding_enhanced_services_internet/adding_enhanced_services_internet.pdf'/>
+      </reference>
+    </references>
+
+  </back>
+</rfc>
