@@ -68,11 +68,13 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   2
-   3.  Observations  . . . . . . . . . . . . . . . . . . . . . . . .   3
-   4.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .   4
-   5.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   5
-   6.  Informative References  . . . . . . . . . . . . . . . . . . .   6
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
+   3.  General Observations  . . . . . . . . . . . . . . . . . . . .   3
+   4.  Overview of IETF Virtualization Technologies  . . . . . . . .   4
+   5.  Architectural Observations  . . . . . . . . . . . . . . . . .   4
+   6.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .   5
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   6
+   8.  Informative References  . . . . . . . . . . . . . . . . . . .   6
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
 
@@ -89,7 +91,28 @@ Table of Contents
    can or cannot do is the first step in developing plans for possible
    extensions.
 
+   In particular, whether one calls a particular piece of technology
+   "virtualization", "slicing", "separation", or "network selection"
+   does not matter at the level of a system.  Any modern system will use
+   several underlying technology components that may use different terms
+   but provide some separation or management.  So, for instance, in a
+   given system you may use VLAN tags in an ethernet segment, MPLS or
+   VPNs across the domain, NAIs to select the right AAA instance, and
+   run all this top of virtualized operating system and software-based
+   switches.  As new needs are being recognised in the developing
+   virtualization technology, what should drive the work is the need for
+   specific capabilities rather than the need to distinghuish a
+   particular term from another term.
+
 2.  Definitions
+
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 2]
+
+Internet-Draft           Network Virtualization             October 2017
+
 
    Network function virtualization is defined in Wikipedia as follows:
 
@@ -107,13 +130,6 @@ Table of Contents
       even cloud computing infrastructure, instead of having custom
       hardware appliances for each network function."
 
-
-
-Arkko                     Expires April 4, 2018                 [Page 2]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
    The related term slicing has been used to describe a virtualization
    concept in planned 5G networks.  The 3GPP architecture specification
    [TS-3GPP.23.501] defines network slices as having potentially
@@ -128,7 +144,7 @@ Internet-Draft           Network Virtualization             October 2017
    (virtual) networks, each tailored for a set of services that are
    sharing the same set of requirements, on top of a common network.
 
-3.  Observations
+3.  General Observations
 
    Software vs. Protocols
 
@@ -146,6 +162,14 @@ Internet-Draft           Network Virtualization             October 2017
       because a function or a connection exists on a virtual platform.
       However, sometimes there are useful underlying technologies that
       facilitiate connection to virtualized systems, or optimised or
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 3]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
       additional tools that are needed in the the virtualized
       environment.
 
@@ -161,14 +185,23 @@ Internet-Draft           Network Virtualization             October 2017
       data models that can assist in setting up and administering
       virtualized systems.
 
+4.  Overview of IETF Virtualization Technologies
+
+   ... general networking is largely agnostic to virtualization ...
+
+   Technologies for that assist separation and engineering of networks:
+   ... at L2 ... VPNs ... MPLS ... segment routing ... traffic
+   engineering and TEAS ... data models ...
+
+   Management tools: ... data models ...
+
+5.  Architectural Observations
+
+   Role of Software
+
+      ...
+
    Centralization of Functions
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 3]
-
-Internet-Draft           Network Virtualization             October 2017
-
 
       An interesting architectural trend is that virtualization and data
       /software driven networking technologies are driving network
@@ -184,9 +217,22 @@ Internet-Draft           Network Virtualization             October 2017
       of change.  There are, however, potential pitfalls to be aware of
       as well.  First off, networks need to continue to be operate even
       under partial connectivity situations and breakage, and it is key
-      that designs can handle those situations as well.  And it is
-      important that network users and peers continue to be able to
-      operate and connect in the way that best suits them.
+      that designs can handle those situations as well.
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 4]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
+      And it is important that network users and peers continue to be
+      able to operate and connect in the distributed, voluntary manner
+      that we have today.  Today's virtualization technology is
+      primarily used to manage single administrative domains and to
+      offer specific service to others.  One could imagine centralised
+      models being taken too far as well, limiting the ability of other
+      network owners to manage their own networks.
 
    Tailored vs. general-purpose networking
 
@@ -200,7 +246,7 @@ Internet-Draft           Network Virtualization             October 2017
       use cases.  Even if those are very useful in critical
       applications.
 
-4.  Further Work
+6.  Further Work
 
    There may be needs for further work in this area at the IETF.  Before
    discussing the specific needs, it may be useful to classify the types
@@ -218,14 +264,6 @@ Internet-Draft           Network Virtualization             October 2017
    together to achieve a particular purpose or build a specific
    application.
 
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 4]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
    As a result, IETF's work on new systems employing virtualization
    techniques (such as 5G slicing concept) is more at the component
    improvement level than at the level of the concept.  There needs to
@@ -236,6 +274,13 @@ Internet-Draft           Network Virtualization             October 2017
    throughtout the stack.  Indeed, systems and concepts are usually
    built on top of solid, well defined components such as the ones
    produced by the IETF.
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 5]
+
+Internet-Draft           Network Virtualization             October 2017
+
 
    That mapping work is necessarily something that those who want to
    achieve some new functionality need to do; it is difficult for others
@@ -271,29 +316,27 @@ Internet-Draft           Network Virtualization             October 2017
       groups can represent a "service" offered by a network, a setup
       built for a specific customer or purpose.
 
-5.  Acknowledgements
-
-
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 5]
-
-Internet-Draft           Network Virtualization             October 2017
-
+7.  Acknowledgements
 
    The author would like to thank Gonzalo Camarillo, Joel Halpern, Jeff
    Tantsura, Gabriel Montenegro, Alex Galis, Adrian Farrell, Yi Zhao,
    Hannu Flinck, and many others for interesting discussions in this
    problem space.
 
-6.  Informative References
+8.  Informative References
 
    [CC2015]   claffy, kc. and D. Clark, "Adding Enhanced Services to the
               Internet: Lessons from History", September 2015 (https://
               www.caida.org/publications/papers/2015/
               adding_enhanced_services_internet/
               adding_enhanced_services_internet.pdf).
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 6]
+
+Internet-Draft           Network Virtualization             October 2017
+
 
    [I-D.king-teas-applicability-actn-slicing]
               King, D. and Y. Lee, "Applicability of Abstraction and
@@ -333,4 +376,17 @@ Author's Address
 
 
 
-Arkko                     Expires April 4, 2018                 [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 7]

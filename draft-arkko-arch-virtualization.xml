@@ -82,6 +82,19 @@
       is the first step in developing plans for possible
       extensions.</t>
 
+      <t>In particular, whether one calls a particular piece of
+      technology "virtualization", "slicing", "separation", or
+      "network selection" does not matter at the level of a
+      system. Any modern system will use several underlying technology
+      components that may use different terms but provide some
+      separation or management. So, for instance, in a given system
+      you may use VLAN tags in an ethernet segment, MPLS or
+      VPNs across the domain, NAIs to select the right AAA instance,
+      and run all this top of virtualized operating system and
+      software-based switches. As new needs are being recognised in
+      the developing virtualization technology, what should drive the
+      work is the need for specific capabilities rather than the need
+      to distinghuish a particular term from another term.</t>
     </section>
 
     <section title="Definitions">
@@ -123,8 +136,7 @@
 
     </section>
 
-    <section title="Observations">
-
+    <section title="General Observations">
       <t><list style="hanging">
 	
 	<t hangText="Software vs. Protocols"><vspace blankLines="1"/>
@@ -159,6 +171,30 @@
 	include virtual private networking mechanisms or management
 	mechanisms and data models that can assist in setting up and
 	administering virtualized systems.</t>
+
+      </list></t>
+      
+    </section>
+
+    <section title="Overview of IETF Virtualization Technologies">
+
+      <t>... general networking is largely agnostic to virtualization
+      ...</t>
+      
+      <t>Technologies for that assist separation and engineering of
+      networks: ... at L2 ... VPNs ... MPLS ... segment routing
+      ... traffic engineering and TEAS ... data models ... </t>
+
+      <t>Management tools: ... data models ...</t>
+      
+    </section>
+    
+    <section title="Architectural Observations">
+
+      <t><list style="hanging">
+
+	<t hangText="Role of Software"><vspace blankLines="1"/>
+	...</t>
 	
 	<t hangText="Centralization of Functions"><vspace blankLines="1"/>
 
@@ -171,17 +207,24 @@
 	A natural consequence of this is the simplification (and
 	perhaps commoditization) of network elements, while the
 	"intelligent" or higher value functions migrate to the
-	center.  <vspace blankLines="1"/>
+	center.   <vspace blankLines="1"/>
 
 	The benefits are largely in the manageability, control,
 	and speed of change. There are, however, potential
 	pitfalls to be aware of as well. First off, networks
 	need to continue to be operate even under partial
 	connectivity situations and breakage, and it is key that
-	designs can handle those situations as well. And
-	it is important that network users and peers
-	continue to be able to operate and connect in
-	the way that best suits them.</t>
+	designs can handle those situations as well.<vspace
+	blankLines="1"/>
+	
+	And it is important that network users and peers continue to
+	be able to operate and connect in the distributed, voluntary
+	manner that we have today. Today's virtualization technology
+	is primarily used to manage single administrative domains and
+	to offer specific service to others. One could imagine
+	centralised models being taken too far as well, limiting the
+	ability of other network owners to manage their own networks.
+	</t>
       
 	<t hangText="Tailored vs. general-purpose networking"><vspace blankLines="1"/>
 
