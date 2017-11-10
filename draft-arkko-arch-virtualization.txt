@@ -32,7 +32,7 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at https://datatracker.ietf.org/drafts/current/.
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
@@ -48,7 +48,7 @@ Copyright Notice
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (https://trustee.ietf.org/license-info) in effect on the date of
+   (http://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
 
 
@@ -73,7 +73,7 @@ Table of Contents
      4.1.  Lower layers  . . . . . . . . . . . . . . . . . . . . . .   5
      4.2.  Traffic Separation in VPNs  . . . . . . . . . . . . . . .   5
      4.3.  Traffic Engineering and QoS . . . . . . . . . . . . . . .   5
-     4.4.  Service Chaining  . . . . . . . . . . . . . . . . . . . .   5
+     4.4.  Service Chaining  . . . . . . . . . . . . . . . . . . . .   6
      4.5.  Management Frameworks and Data Models . . . . . . . . . .   6
    5.  Architectural Observations  . . . . . . . . . . . . . . . . .   7
    6.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .   8
@@ -269,9 +269,9 @@ Internet-Draft           Network Virtualization             October 2017
          the setup and maintenance of TE paths and TE tunnels that span
          multiple domains and/or switching technologies.
 
-4.4.  Service Chaining
 
-   The SFC working group has defined the concept of Service Chaining:
+
+
 
 
 
@@ -281,6 +281,10 @@ Arkko                     Expires April 4, 2018                 [Page 5]
 
 Internet-Draft           Network Virtualization             October 2017
 
+
+4.4.  Service Chaining
+
+   The SFC working group has defined the concept of Service Chaining:
 
       Today, common deployment models have service functions inserted on
       the data-forwarding path between communicating peers.  Going
@@ -326,10 +330,6 @@ Internet-Draft           Network Virtualization             October 2017
       The Layer Two Virtual Private Network Service Model (L2SM) working
       group is a short-lived WG.  It is tasked to create a YANG data
       model that describes a L2VPN service (a L2VPN customer service
-      model).  The model can be used for communication between customers
-      and network operators, and to provide input to automated control
-      and configuration applications.
-
 
 
 
@@ -337,6 +337,10 @@ Arkko                     Expires April 4, 2018                 [Page 6]
 
 Internet-Draft           Network Virtualization             October 2017
 
+
+      model).  The model can be used for communication between customers
+      and network operators, and to provide input to automated control
+      and configuration applications.
 
       It is recognized that it would be beneficial to have a common base
       model that addresses multiple popular L2VPN service types.  The
@@ -365,8 +369,8 @@ Internet-Draft           Network Virtualization             October 2017
 
    Centralization of Functions
 
-      An interesting architectural trend is that virtualization and
-      data/software driven networking technologies are driving network
+      An interesting architectural trend is that virtualization and data
+      /software driven networking technologies are driving network
       architectures where functionality moves towards central entities
       such as various controllers, path computation servers, and
       orchestration systems.
@@ -381,11 +385,7 @@ Internet-Draft           Network Virtualization             October 2017
       under partial connectivity situations and breakage, and it is key
       that designs can handle those situations as well.
 
-      And it is important that network users and peers continue to be
-      able to operate and connect in the distributed, voluntary manner
-      that we have today.  Today's virtualization technology is
-      primarily used to manage single administrative domains and to
-      offer specific service to others.  One could imagine centralised
+
 
 
 
@@ -394,6 +394,11 @@ Arkko                     Expires April 4, 2018                 [Page 7]
 Internet-Draft           Network Virtualization             October 2017
 
 
+      And it is important that network users and peers continue to be
+      able to operate and connect in the distributed, voluntary manner
+      that we have today.  Today's virtualization technology is
+      primarily used to manage single administrative domains and to
+      offer specific service to others.  One could imagine centralised
       models being taken too far as well, limiting the ability of other
       network owners to manage their own networks.
 
@@ -438,11 +443,6 @@ Internet-Draft           Network Virtualization             October 2017
    built on top of solid, well defined components such as the ones
    produced by the IETF.
 
-   That mapping work is necessarily something that those who want to
-   achieve some new functionality need to do; it is difficult for others
-   to take a position on what the new functionality is.  But at the same
-   time, IETF working groups and participants typically have a
-
 
 
 Arkko                     Expires April 4, 2018                 [Page 8]
@@ -450,6 +450,10 @@ Arkko                     Expires April 4, 2018                 [Page 8]
 Internet-Draft           Network Virtualization             October 2017
 
 
+   That mapping work is necessarily something that those who want to
+   achieve some new functionality need to do; it is difficult for others
+   to take a position on what the new functionality is.  But at the same
+   time, IETF working groups and participants typically have a
    perspective on how their technology should develop and be extended.
    Those two viewpoints must meet.
 
@@ -490,14 +494,10 @@ Internet-Draft           Network Virtualization             October 2017
 8.  Informative References
 
    [CC2015]   claffy, kc. and D. Clark, "Adding Enhanced Services to the
-              Internet: Lessons from History", September 2015
-              (https://www.caida.org/publications/papers/2015/
+              Internet: Lessons from History", September 2015 (https://
+              www.caida.org/publications/papers/2015/
               adding_enhanced_services_internet/
               adding_enhanced_services_internet.pdf).
-
-
-
-
 
 
 
@@ -519,9 +519,9 @@ Internet-Draft           Network Virtualization             October 2017
 
    [RFC2616]  Fielding, R., Gettys, J., Mogul, J., Frystyk, H.,
               Masinter, L., Leach, P., and T. Berners-Lee, "Hypertext
-              Transfer Protocol -- HTTP/1.1", RFC 2616,
-              DOI 10.17487/RFC2616, June 1999,
-              <https://www.rfc-editor.org/info/rfc2616>.
+              Transfer Protocol -- HTTP/1.1", RFC 2616, DOI 10.17487/
+              RFC2616, June 1999, <https://www.rfc-editor.org/info/
+              rfc2616>.
 
    [RFC4761]  Kompella, K., Ed. and Y. Rekhter, Ed., "Virtual Private
               LAN Service (VPLS) Using BGP for Auto-Discovery and
@@ -530,8 +530,8 @@ Internet-Draft           Network Virtualization             October 2017
 
    [RFC6020]  Bjorklund, M., Ed., "YANG - A Data Modeling Language for
               the Network Configuration Protocol (NETCONF)", RFC 6020,
-              DOI 10.17487/RFC6020, October 2010,
-              <https://www.rfc-editor.org/info/rfc6020>.
+              DOI 10.17487/RFC6020, October 2010, <https://www.rfc-
+              editor.org/info/rfc6020>.
 
    [RFC6624]  Kompella, K., Kothari, B., and R. Cherukuri, "Layer 2
               Virtual Private Networks Using BGP for Auto-Discovery and
@@ -550,9 +550,9 @@ Internet-Draft           Network Virtualization             October 2017
               3GPP Technical Specification 23.501, July 2017.
 
    [VirtualHosting]
-              Wikipedia, "Virtual Hosting", Wikipedia article
-              https://en.wikipedia.org/wiki/Virtual_hosting, August
-              2017.
+              Wikipedia, "Virtual Hosting", Wikipedia article https://
+              en.wikipedia.org/wiki/Virtual_hosting, August 2017.
+
 
 
 
