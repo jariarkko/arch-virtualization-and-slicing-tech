@@ -77,8 +77,8 @@ Table of Contents
      4.5.  Management Frameworks and Data Models . . . . . . . . . .   6
    5.  Architectural Observations  . . . . . . . . . . . . . . . . .   7
    6.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .   8
-   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   9
-   8.  Informative References  . . . . . . . . . . . . . . . . . . .   9
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  10
+   8.  Informative References  . . . . . . . . . . . . . . . . . . .  10
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  11
 
 1.  Introduction
@@ -361,6 +361,20 @@ Internet-Draft           Network Virtualization             October 2017
       Other L2VPN service types may be included if there is consensus in
       the working group.
 
+   Similarly, the L3SM WG specified a sevice model for L3-based VPNs.
+
+      The Layer Three Virtual Private Network Service Model (L3SM)
+      working group is a short-lived WG tasked to create a YANG data
+      model that describes a L3VPN service (a L3VPN service model) that
+      can be used for communication between customers and network
+      operators, and to provide input to automated control and
+      configuration applications.
+
+      It needs to be clearly understood that this L3VPN service model is
+      not an L3VPN configuration model.  That is, it does not provide
+      details for configuring network elements or protocols.  Instead it
+      contains the characteristics of the service.
+
 5.  Architectural Observations
 
    Role of Software
@@ -372,6 +386,14 @@ Internet-Draft           Network Virtualization             October 2017
       An interesting architectural trend is that virtualization and data
       /software driven networking technologies are driving network
       architectures where functionality moves towards central entities
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 7]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
       such as various controllers, path computation servers, and
       orchestration systems.
 
@@ -384,15 +406,6 @@ Internet-Draft           Network Virtualization             October 2017
       as well.  First off, networks need to continue to be operate even
       under partial connectivity situations and breakage, and it is key
       that designs can handle those situations as well.
-
-
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 7]
-
-Internet-Draft           Network Virtualization             October 2017
-
 
       And it is important that network users and peers continue to be
       able to operate and connect in the distributed, voluntary manner
@@ -429,6 +442,14 @@ Internet-Draft           Network Virtualization             October 2017
 
    The IETF also does not generally work on system-level design.  IETF
    is best at designing components, not putting those components
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 8]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
    together to achieve a particular purpose or build a specific
    application.
 
@@ -442,13 +463,6 @@ Internet-Draft           Network Virtualization             October 2017
    throughtout the stack.  Indeed, systems and concepts are usually
    built on top of solid, well defined components such as the ones
    produced by the IETF.
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 8]
-
-Internet-Draft           Network Virtualization             October 2017
-
 
    That mapping work is necessarily something that those who want to
    achieve some new functionality need to do; it is difficult for others
@@ -484,6 +498,14 @@ Internet-Draft           Network Virtualization             October 2017
       groups can represent a "service" offered by a network, a setup
       built for a specific customer or purpose.
 
+
+
+
+Arkko                     Expires April 4, 2018                 [Page 9]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
 7.  Acknowledgements
 
    The author would like to thank Gonzalo Camarillo, Joel Halpern, Jeff
@@ -498,13 +520,6 @@ Internet-Draft           Network Virtualization             October 2017
               www.caida.org/publications/papers/2015/
               adding_enhanced_services_internet/
               adding_enhanced_services_internet.pdf).
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 9]
-
-Internet-Draft           Network Virtualization             October 2017
-
 
    [I-D.ietf-sfc-nsh]
               Quinn, P., Elzur, U., and C. Pignataro, "Network Service
@@ -538,10 +553,24 @@ Internet-Draft           Network Virtualization             October 2017
               Signaling", RFC 6624, DOI 10.17487/RFC6624, May 2012,
               <https://www.rfc-editor.org/info/rfc6624>.
 
+
+
+
+
+Arkko                     Expires April 4, 2018                [Page 10]
+
+Internet-Draft           Network Virtualization             October 2017
+
+
    [RFC7432]  Sajassi, A., Ed., Aggarwal, R., Bitar, N., Isaac, A.,
               Uttaro, J., Drake, J., and W. Henderickx, "BGP MPLS-Based
               Ethernet VPN", RFC 7432, DOI 10.17487/RFC7432, February
               2015, <https://www.rfc-editor.org/info/rfc7432>.
+
+   [RFC8049]  Litkowski, S., Tomotaki, L., and K. Ogaki, "YANG Data
+              Model for L3VPN Service Delivery", RFC 8049, DOI 10.17487/
+              RFC8049, February 2017, <https://www.rfc-editor.org/info/
+              rfc8049>.
 
    [TS-3GPP.23.501]
               3GPP, "3rd Generation Partnership Project; Technical
@@ -553,15 +582,6 @@ Internet-Draft           Network Virtualization             October 2017
               Wikipedia, "Virtual Hosting", Wikipedia article https://
               en.wikipedia.org/wiki/Virtual_hosting, August 2017.
 
-
-
-
-
-Arkko                     Expires April 4, 2018                [Page 10]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
 Author's Address
 
    Jari Arkko
@@ -570,26 +590,6 @@ Author's Address
    Finland
 
    Email: jari.arkko@piuha.net
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
