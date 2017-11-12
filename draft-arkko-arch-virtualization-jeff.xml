@@ -178,9 +178,7 @@
 
     <section title="Overview of IETF Virtualization Technologies">
 
-      <t>... general networking is largely agnostic to virtualization
-	      ...</t>
-      <t>We should not confuse NFV and network virtualization, the
+    <t>We should not confuse NFV and network virtualization, the
       former, as the name suggests is about functions virtualization,
       and not the network. </t>
       
@@ -191,17 +189,31 @@
 	 The general benefits and desirability of VPNs have been described many times and in many places ([RFC4110] and [RFC4664])
 	 <vspace blankLines="1"/>
 	 The only immutable infrastructure is the "physical" medium, that could be dedicated or "sliced" to provide services(VPNs) in a multi-tenant environment.
-	 L1VPN[RFC] provides
-	 L2
-	 Tunneling over IP (MPLS, GRE, IPinIP, IPoIP/UDP, L2TP, etc) provide
-	 L2VPN provides
-	 L3VPN provides
+	 L1VPN facilitates virtualization of the underlying L0 "physical" medium
+	 L2 [IEEE802.1Q] facilitates virtualization of the underlying Ethernet network
+	 Tunneling over IP (MPLS, GRE, VxLAN, IPinIP, L2TP, etc)
+	 facilitates virtualization of the underlying IP network -
+	 MPLS LSP's - either traffic engineered or not belong here
+	 L2VPN facilitates virtualization of a L2 network
+	 L3VPN facilitates virtualization of a L3 network
+	 </t>
 
       <t>Technologies for that assist separation and engineering of
       networks: ... at L2 ... VPNs ... MPLS ... segment routing
       ... traffic engineering and TEAS ... data models ... </t>
 
       <t>Management tools: ... data models ...</t>
+
+       <t> YANG is a powerful and versatile data modeling language
+       that was designed from the requirements of network operators
+       for an easy to use and robust mechanism for provisioning
+       devices and services across networks.
+       It was originally designed at the Internet Engineering Task Force (IETF)
+       and has been so successful that it has been adopted as the
+       standard for modeling design in
+       many other standards bodies such as the Metro Ethernet Forum,
+       OpenDaylight, OpenConfig, and others.
+       The number of YANG modules being implemented for interfaces, devices, and service is exploding.
       
     </section>
     
