@@ -4,8 +4,12 @@
 
 Internet Engineering Task Force                                 J. Arkko
 Internet-Draft                                                  Ericsson
-Intended status: Informational                              October 2017
-Expires: April 4, 2018
+Intended status: Informational                               J. Tantsura
+Expires: May 17, 2018                         Futurewei, Future Networks
+                                                              J. Halpern
+                                                                B. Varga
+                                                                Ericsson
+                                                       November 13, 2017
 
 
           Considerations on Network Virtualization and Slicing
@@ -13,16 +17,13 @@ Expires: April 4, 2018
 
 Abstract
 
-   Network virtualization is network management pertaining to treating
-   different traffic categories in separate virtual networks, with
-   independent resource, technology, and topology choices.
-
    This document makes some observations on the effects virtualization
-   on Internet architecture.  A further revision of this document will
-   also provide a summary of IETF technologies that relate to network
-   virtualization.  An understanding of what current technologies there
-   exist and what they can or cannot do is the first step in developing
-   plans for possible extensions.
+   on Internet architecture.
+
+   This document also provides a summary of IETF technologies that
+   relate to network virtualization.  An understanding of what current
+   technologies there exist and what they can or cannot do is the first
+   step in developing plans for possible extensions.
 
 Status of This Memo
 
@@ -39,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 4, 2018.
+   This Internet-Draft will expire on May 17, 2018.
 
 Copyright Notice
 
@@ -49,15 +50,15 @@ Copyright Notice
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
    (http://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
 
 
 
-Arkko                     Expires April 4, 2018                 [Page 1]
+Arkko, et al.             Expires May 17, 2018                  [Page 1]
 
-Internet-Draft           Network Virtualization             October 2017
+Internet-Draft           Network Virtualization            November 2017
 
 
+   publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
@@ -68,36 +69,51 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   3.  General Observations  . . . . . . . . . . . . . . . . . . . .   3
-   4.  Overview of IETF Virtualization Technologies  . . . . . . . .   4
+   3.  General Observations  . . . . . . . . . . . . . . . . . . . .   4
+   4.  Overview of IETF Virtualization Technologies  . . . . . . . .   5
      4.1.  Lower layers  . . . . . . . . . . . . . . . . . . . . . .   5
      4.2.  Traffic Separation in VPNs  . . . . . . . . . . . . . . .   5
-     4.3.  Traffic Engineering and QoS . . . . . . . . . . . . . . .   5
-     4.4.  Service Chaining  . . . . . . . . . . . . . . . . . . . .   6
-     4.5.  Management Frameworks and Data Models . . . . . . . . . .   6
-   5.  Architectural Observations  . . . . . . . . . . . . . . . . .   7
-   6.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .   8
-   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  10
-   8.  Informative References  . . . . . . . . . . . . . . . . . . .  10
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  11
+     4.3.  Traffic Engineering and QoS . . . . . . . . . . . . . . .   7
+     4.4.  Service Chaining  . . . . . . . . . . . . . . . . . . . .   8
+     4.5.  Management Frameworks and Data Models . . . . . . . . . .   8
+   5.  Architectural Observations  . . . . . . . . . . . . . . . . .  10
+   6.  Further Work  . . . . . . . . . . . . . . . . . . . . . . . .  11
+   7.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  12
+   8.  Informative References  . . . . . . . . . . . . . . . . . . .  12
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
 
 1.  Introduction
 
    Network virtualization is network management pertaining to treating
    different traffic categories in separate virtual networks, with
-   independent resource, technology, and topology choices.
+   independent lifecycle management and resource, technology, and
+   topology choices.
 
    This document makes some observations on the effects virtualization
    on Internet architecture.
 
-   A further revision of this document will also provide a summary of
-   IETF technologies that relate to network virtualization.  An
-   understanding of what current technologies there exist and what they
-   can or cannot do is the first step in developing plans for possible
-   extensions.
+   This document also provides a summary of IETF technologies that
+   relate to network virtualization.  An understanding of what current
+   technologies there exist and what they can or cannot do is the first
+   step in developing plans for possible extensions.
+
+   In particular, many IETF discussions earlier in the summer of 2017
+   started from a top-down view of new virtualization technologies, but
+   were often unable to explain the necessary delta to the wealth of
+   existing IETF technology in this space.  This document takes a
+   different, bottom-up approach to the topic and attempts to document
+   existing technology, and then identify areas of needed development.
 
    In particular, whether one calls a particular piece of technology
    "virtualization", "slicing", "separation", or "network selection"
+
+
+
+Arkko, et al.             Expires May 17, 2018                  [Page 2]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
    does not matter at the level of a system.  Any modern system will use
    several underlying technology components that may use different terms
    but provide some separation or management.  So, for instance, in a
@@ -106,14 +122,6 @@ Table of Contents
    run all this top of virtualized operating system and software-based
    switches.  As new needs are being recognised in the developing
    virtualization technology, what should drive the work is the need for
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 2]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
    specific capabilities rather than the need to distinghuish a
    particular term from another term.
 
@@ -135,8 +143,35 @@ Internet-Draft           Network Virtualization             October 2017
       even cloud computing infrastructure, instead of having custom
       hardware appliances for each network function."
 
-   The related term slicing has been used to describe a virtualization
-   concept in planned 5G networks.  The 3GPP architecture specification
+   We should not confuse NFV and network virtualization, the former, as
+   the name suggests is about functions virtualization, and not the
+   network.
+
+   The idea of network virtualization is almost as old as the networking
+   technology itself.  Network virtualization is hierarchical and
+   multilayer in its nature, from layer 1 up to services on top.  When
+   talking about virtualization we usually define overlay to underlay
+   relationship between different layers, bottom up.  A VPN (Virtual
+   Private Network) [RFC4026] is the most common form of network
+   virtualization.  The general benefits and desirability of VPNs have
+   been described many times and in many places ([RFC4110] and
+   [RFC4664]).
+
+   The only immutable infrastructure is the "physical" medium, that
+   could be dedicated or "sliced" to provide services(VPNs) in a multi-
+   tenant environment.
+
+
+
+
+
+Arkko, et al.             Expires May 17, 2018                  [Page 3]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
+   The term slicing has been used to describe a virtualization concept
+   in planned 5G networks.  The 3GPP architecture specification
    [TS-3GPP.23.501] defines network slices as having potentially
    different "supported features and network functions optimisations",
    and spanning functions from core network to radio access networks.
@@ -148,6 +183,11 @@ Internet-Draft           Network Virtualization             October 2017
    Network Function Virtualization (NFV) to create multiple logical
    (virtual) networks, each tailored for a set of services that are
    sharing the same set of requirements, on top of a common network.
+
+   And, [I-D.geng-coms-problem-statement] defines slicing as a
+   management mechanism that an service provider can use to allocate
+   dedicated network resources from shared network infrastructures to a
+   tenant.
 
 3.  General Observations
 
@@ -163,13 +203,6 @@ Internet-Draft           Network Virtualization             October 2017
       there may not be wires or other physical communication channels,
       and that connections can be made in the desired fashion.
 
-
-
-Arkko                     Expires April 4, 2018                 [Page 3]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
       In general, there is no reason for protocols to change just
       because a function or a connection exists on a virtual platform.
       However, sometimes there are useful underlying technologies that
@@ -183,6 +216,15 @@ Internet-Draft           Network Virtualization             October 2017
       choice of Access Point Names (APNs).  These techniques allow users
       and traffic to be put on specific networks, which in turn may
       comprise of virtual components.
+
+
+
+
+
+Arkko, et al.             Expires May 17, 2018                  [Page 4]
+
+Internet-Draft           Network Virtualization            November 2017
+
 
       Other examples of protocols providing helpful techniques include
       virtual private networking mechanisms or management mechanisms and
@@ -218,14 +260,6 @@ Internet-Draft           Network Virtualization             October 2017
    currently under development that support virtualization in its
    various forms.
 
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 4]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
 4.1.  Lower layers
 
    Technologies for that assist separation and engineering of networks
@@ -233,9 +267,96 @@ Internet-Draft           Network Virtualization             October 2017
 
 4.2.  Traffic Separation in VPNs
 
-   Technologies for that assist separation and engineering of networks:
-   ... provider-based VPNs ... GRE and other tunnels ... secure tunnels
-   ... MPLS ... segment routing ...
+   Technologies that assist separation and engineering of networks
+   include both end-point and provider-based VPNs.  End-point VPN
+   tehchnologies include, for instance, IPsec-based VPNs [RFC4301].
+
+   For providing virtualised services, however, provider-based solutions
+   are often the most relevant ones.  L1VPN facilitates virtualization
+   of the underlying L0 "physical" medium L2 [IEEE802.1Q] facilitates
+
+
+
+Arkko, et al.             Expires May 17, 2018                  [Page 5]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
+   virtualization of the underlying Ethernet network Tunneling over IP
+   (MPLS, GRE, VxLAN, IPinIP, L2TP, etc) facilitates virtualization of
+   the underlying IP network - MPLS LSP's - either traffic engineered or
+   not belong here L2VPN facilitates virtualization of a L2 network
+   L3VPN facilitates virtualization of a L3 network.
+
+   The IETF has defined a multiplicity of technologies that can be used
+   for provider-based VPNs.  The technologies choices available can be
+   described along two axes, control mechanisms and dataplane
+   encapsulation mechanisms.  The two are not compeltely orthogonal.
+
+   In the data plane, for provider based VPNs, the first important
+   observation is that the most obvious encapsulation is NOT used.
+   While IPSec could be used for provider-based VPNs, it does not appear
+   to be used in practice, and is not the focus for any of the available
+   control mechanisms.
+
+   The common encapsulation for provider-based VPNs is to use MPLS.
+   This is particularly common for VPNs within one operator, and is
+   sometimes supported across operators.
+
+   Keyed GRE can be used, particularly for cross-operator cases.
+   However, it seems to be rare in practice.
+
+   The usage of MPLS for provider-based VPNs generally follows a pattern
+   of using two MPLS labels, one to represent the tunnel between the
+   ingress and egress provider-edge devices, and one to segregate the
+   different VPNs within that tunnel.
+
+   There are three cmmon mechanisms for controlling such VPNs.  Two of
+   them use BGP, and one uses LDP.
+
+   The LDP usage to control VPN establishment falls within the PALS
+   working group, and is used to establish pseudo-wires to carry
+   Ethernet (or lower layer) traffic.  The Ethernet cases tend to be
+   called VPLS (Virtual Private LAN Service) for multi-point
+   connectivity and VPWS (Virtual Private Wire Service) for point-to-
+   point connectivity.  These mechanism do augment the data plane
+   capabilites with control words that support additional features.  In
+   operation, LDP is used to signal the communicating end-points that
+   are interested in communicating with each other in support of
+   specific VPNs.  Information about the MAC addresses used behind the
+   provider edges is exchanged using classic Ethernet flooding
+   technology.  It has been proposed to use BGP to bootstrap the exchang
+   eof information as to who the communicating endpoints are.
+
+   BGP can be used to establish Layer 2 or Layer 3 VPNs.  Originally,
+   the BGP based MPLS VPN technology was developed to support layer 3
+
+
+
+Arkko, et al.             Expires May 17, 2018                  [Page 6]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
+   VPNs. the BGP exchanges uses several different features in BGP
+   (specifically route distinguishers and route targets) to control the
+   distribution of information about VPN end-points.  The BGP
+   information carries the VPN IP address prefixes, and the MPLS labels
+   to be used to represent the VPN.  This technolgoy combination is
+   generally known as L3VPN.
+
+   This usage of BGP for VPNs has been extended to support Layer 2 VPNs.
+   This is known as EVPN.  The BGP exchanges are used to carry the MAC
+   address reachability behind each provider edge router, providing an
+   Ethernet multipoint service without a need to flood unkown-
+   destination Ethernet packets.
+
+   In theory, the BGP mechanisms can also be used to support other
+   tunnels such as keyed GRE.  That is not widely practiced.
+
+   There are also hybrid variations, such as adding an ARP / ND proxy
+   service so that an L3VPN can be used with an L2 Access, when the only
+   desired service is IP.
 
 4.3.  Traffic Engineering and QoS
 
@@ -265,22 +386,17 @@ Internet-Draft           Network Virtualization             October 2017
          ISIS), for path computation (PCE), and RSVP-TE to provide
          general enablers of traffic-engineering systems.
 
+
+
+
+Arkko, et al.             Expires May 17, 2018                  [Page 7]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
       *  Definition of control plane mechanisms and extensions to allow
          the setup and maintenance of TE paths and TE tunnels that span
          multiple domains and/or switching technologies.
-
-
-
-
-
-
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 5]
-
-Internet-Draft           Network Virtualization             October 2017
-
 
 4.4.  Service Chaining
 
@@ -310,10 +426,29 @@ Internet-Draft           Network Virtualization             October 2017
    There have been two working groups at the IETF, focusing on data
    models describing VPNs.  The IETF and the industry in general is
    currently specifying a set of YANG models for network element and
-   protocol configuration [RFC6020].  A service model is an abstract
-   model, at a higher level than network element or protocol
-   configuration.  A service model for VPN service describes a VPN in a
-   manner that a customer of the VPN service would see it.
+   protocol configuration [RFC6020].
+
+   YANG is a powerful and versatile data modeling language that was
+   designed from the requirements of network operators for an easy to
+   use and robust mechanism for provisioning devices and services across
+   networks.  It was originally designed at the Internet Engineering
+   Task Force (IETF) and has been so successful that it has been adopted
+   as the standard for modeling design in many other standards bodies
+   such as the Metro Ethernet Forum, OpenDaylight, OpenConfig, and
+   others.  The number of YANG modules being implemented for interfaces,
+   devices, and service is exploding.
+
+   A service model is an abstract model, at a higher level than network
+   element or protocol configuration.  A service model for VPN service
+   describes a VPN in a manner that a customer of the VPN service would
+   see it.
+
+
+
+Arkko, et al.             Expires May 17, 2018                  [Page 8]
+
+Internet-Draft           Network Virtualization            November 2017
+
 
    It needs to be clearly understood that such a service model is not a
    configuration model.  That is, it does not provide details for
@@ -330,14 +465,6 @@ Internet-Draft           Network Virtualization             October 2017
       The Layer Two Virtual Private Network Service Model (L2SM) working
       group is a short-lived WG.  It is tasked to create a YANG data
       model that describes a L2VPN service (a L2VPN customer service
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 6]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
       model).  The model can be used for communication between customers
       and network operators, and to provide input to automated control
       and configuration applications.
@@ -370,6 +497,15 @@ Internet-Draft           Network Virtualization             October 2017
       operators, and to provide input to automated control and
       configuration applications.
 
+
+
+
+
+Arkko, et al.             Expires May 17, 2018                  [Page 9]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
       It needs to be clearly understood that this L3VPN service model is
       not an L3VPN configuration model.  That is, it does not provide
       details for configuring network elements or protocols.  Instead it
@@ -386,14 +522,6 @@ Internet-Draft           Network Virtualization             October 2017
       An interesting architectural trend is that virtualization and data
       /software driven networking technologies are driving network
       architectures where functionality moves towards central entities
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 7]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
       such as various controllers, path computation servers, and
       orchestration systems.
 
@@ -427,6 +555,13 @@ Internet-Draft           Network Virtualization             October 2017
       use cases.  Even if those are very useful in critical
       applications.
 
+
+
+Arkko, et al.             Expires May 17, 2018                 [Page 10]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
 6.  Further Work
 
    There may be needs for further work in this area at the IETF.  Before
@@ -442,14 +577,6 @@ Internet-Draft           Network Virtualization             October 2017
 
    The IETF also does not generally work on system-level design.  IETF
    is best at designing components, not putting those components
-
-
-
-Arkko                     Expires April 4, 2018                 [Page 8]
-
-Internet-Draft           Network Virtualization             October 2017
-
-
    together to achieve a particular purpose or build a specific
    application.
 
@@ -483,6 +610,14 @@ Internet-Draft           Network Virtualization             October 2017
       some kind of selector that can be used to run multiple instances
       or connect to multiple different networks.
 
+
+
+
+Arkko, et al.             Expires May 17, 2018                 [Page 11]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
    Traffic engineering
 
       A big reason for building specific networks for specific purposes
@@ -498,13 +633,23 @@ Internet-Draft           Network Virtualization             October 2017
       groups can represent a "service" offered by a network, a setup
       built for a specific customer or purpose.
 
+   Some specific areas where work is likely needed include:
 
+   o  The ability to manage heterogenous technologies, e.g., across SDN
+      and traditionally built networks, or manage both general-purpose
+      and very technology-specific parameters such as those associated
+      with 5G radio.
 
+   o  The ability to specify "statistical" rather than hard performance
+      parameters.  In some networks -- notably with wireless technology
+      -- recent advances have made very high peak rates possible, but
+      with increased bursty-ness of traffic and with potential
+      bottlenecks on the aggregation parts of the networks.  The ability
+      to specify statistical performance in data models and in VPN
+      configuration would be important, over different timescales and
+      probabilities.
 
-Arkko                     Expires April 4, 2018                 [Page 9]
-
-Internet-Draft           Network Virtualization             October 2017
-
+   o  cross-domain ...
 
 7.  Acknowledgements
 
@@ -520,6 +665,20 @@ Internet-Draft           Network Virtualization             October 2017
               www.caida.org/publications/papers/2015/
               adding_enhanced_services_internet/
               adding_enhanced_services_internet.pdf).
+
+
+
+
+Arkko, et al.             Expires May 17, 2018                 [Page 12]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
+   [I-D.geng-coms-problem-statement]
+              67, 4., Slawomir, S., Qiang, L., Matsushima, S., Galis,
+              A., and L. Contreras, "Problem Statement of Supervised
+              Heterogeneous Network Slicing", draft-geng-coms-problem-
+              statement-00 (work in progress), September 2017.
 
    [I-D.ietf-sfc-nsh]
               Quinn, P., Elzur, U., and C. Pignataro, "Network Service
@@ -538,10 +697,38 @@ Internet-Draft           Network Virtualization             October 2017
               RFC2616, June 1999, <https://www.rfc-editor.org/info/
               rfc2616>.
 
+   [RFC4026]  Andersson, L. and T. Madsen, "Provider Provisioned Virtual
+              Private Network (VPN) Terminology", RFC 4026, DOI 10.17487
+              /RFC4026, March 2005, <https://www.rfc-editor.org/info/
+              rfc4026>.
+
+   [RFC4110]  Callon, R. and M. Suzuki, "A Framework for Layer 3
+              Provider-Provisioned Virtual Private Networks (PPVPNs)",
+              RFC 4110, DOI 10.17487/RFC4110, July 2005, <https://www
+              .rfc-editor.org/info/rfc4110>.
+
+   [RFC4301]  Kent, S. and K. Seo, "Security Architecture for the
+              Internet Protocol", RFC 4301, DOI 10.17487/RFC4301,
+              December 2005, <https://www.rfc-editor.org/info/rfc4301>.
+
+   [RFC4664]  Andersson, L., Ed. and E. Rosen, Ed., "Framework for Layer
+              2 Virtual Private Networks (L2VPNs)", RFC 4664, DOI
+              10.17487/RFC4664, September 2006, <https://www.rfc-
+              editor.org/info/rfc4664>.
+
    [RFC4761]  Kompella, K., Ed. and Y. Rekhter, Ed., "Virtual Private
               LAN Service (VPLS) Using BGP for Auto-Discovery and
               Signaling", RFC 4761, DOI 10.17487/RFC4761, January 2007,
               <https://www.rfc-editor.org/info/rfc4761>.
+
+
+
+
+
+Arkko, et al.             Expires May 17, 2018                 [Page 13]
+
+Internet-Draft           Network Virtualization            November 2017
+
 
    [RFC6020]  Bjorklund, M., Ed., "YANG - A Data Modeling Language for
               the Network Configuration Protocol (NETCONF)", RFC 6020,
@@ -552,15 +739,6 @@ Internet-Draft           Network Virtualization             October 2017
               Virtual Private Networks Using BGP for Auto-Discovery and
               Signaling", RFC 6624, DOI 10.17487/RFC6624, May 2012,
               <https://www.rfc-editor.org/info/rfc6624>.
-
-
-
-
-
-Arkko                     Expires April 4, 2018                [Page 10]
-
-Internet-Draft           Network Virtualization             October 2017
-
 
    [RFC7432]  Sajassi, A., Ed., Aggarwal, R., Bitar, N., Isaac, A.,
               Uttaro, J., Drake, J., and W. Henderickx, "BGP MPLS-Based
@@ -582,7 +760,7 @@ Internet-Draft           Network Virtualization             October 2017
               Wikipedia, "Virtual Hosting", Wikipedia article https://
               en.wikipedia.org/wiki/Virtual_hosting, August 2017.
 
-Author's Address
+Authors' Addresses
 
    Jari Arkko
    Ericsson
@@ -592,6 +770,34 @@ Author's Address
    Email: jari.arkko@piuha.net
 
 
+   Jeff Tantsura
+   Futurewei, Future Networks
+
+   Email: jefftant.ietf@gmail.com
+
+
+
+
+
+
+
+Arkko, et al.             Expires May 17, 2018                 [Page 14]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
+   Joel Halpern
+   Ericsson
+
+   Email: joel.halpern@ericsson.com
+
+
+   Balazs Varga
+   Ericsson
+   Budapest  1097
+   Hungary
+
+   Email: balazs.a.varga@ericsson.com
 
 
 
@@ -613,4 +819,22 @@ Author's Address
 
 
 
-Arkko                     Expires April 4, 2018                [Page 11]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Arkko, et al.             Expires May 17, 2018                 [Page 15]

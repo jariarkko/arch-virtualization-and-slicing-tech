@@ -39,39 +39,7 @@
       </address>
     </author>
 
-    <author fullname="Jeff Tantsura" initials="J." surname="Tantsura">
-      <organization>Futurewei, Future Networks</organization>
-      <address>
-        <email>jefftant.ietf@gmail.com</email>
-      </address>
-    </author>
-    
-    <author fullname="Joel Halpern" initials="J." surname="Halpern">
-      <organization>Ericsson</organization>
-      <address>
-        <email>joel.halpern@ericsson.com</email>
-      </address>
-    </author>
-    
-    <author fullname="Balazs Varga" initials="B." surname="Varga">
-      <organization>Ericsson</organization>
-      <address>
-        <postal>
-          <street></street>
-
-          <city>Budapest</city>
-
-          <region></region>
-
-          <code>1097</code>
-
-          <country>Hungary</country>
-        </postal>
-        <email>balazs.a.varga@ericsson.com</email>
-      </address>
-    </author>
-    
-    <date month="November" year="2017" />
+    <date month="October" year="2017" />
 
     <area>Internet</area>
 
@@ -79,10 +47,14 @@
 
     <abstract>
 
-      <t>This document makes some observations on the effects
-      virtualization on Internet architecture.</t>
+      <t>Network virtualization is network management
+      pertaining to treating different traffic categories in separate
+      virtual networks, with independent lifecycle management and resource, technology, and
+      topology choices.</t>
 
-      <t>This document also provides a summary of IETF technologies
+      <t>This document makes some observations on the effects
+      virtualization on Internet architecture.  A further revision of
+      this document will also provide a summary of IETF technologies
       that relate to network virtualization.  An understanding of what
       current technologies there exist and what they can or cannot do
       is the first step in developing plans for possible
@@ -95,28 +67,21 @@
 
     <section title="Introduction">
 
-      <t>Network virtualization is network management pertaining to
-      treating different traffic categories in separate virtual
-      networks, with independent lifecycle management and resource,
-      technology, and topology choices.</t>
+      <t>Network virtualization is network management
+      pertaining to treating different traffic categories in separate
+      virtual networks, with independent lifecycle management and resource, technology, and
+      topology choices.</t>
 
       <t>This document makes some observations on the effects
       virtualization on Internet architecture.</t>
 
-      <t>This document also provides a summary of IETF technologies
+      <t>A further revision of
+      this document will also provide a summary of IETF technologies
       that relate to network virtualization.  An understanding of what
       current technologies there exist and what they can or cannot do
       is the first step in developing plans for possible
       extensions.</t>
 
-      <t>In particular, many IETF discussions earlier in the summer of
-      2017 started from a top-down view of new virtualization
-      technologies, but were often unable to explain the necessary
-      delta to the wealth of existing IETF technology in this space.
-      This document takes a different, bottom-up approach to the topic
-      and attempts to document existing technology, and then identify
-      areas of needed development.</t>
-	
       <t>In particular, whether one calls a particular piece of
       technology "virtualization", "slicing", "separation", or
       "network selection" does not matter at the level of a
@@ -151,25 +116,7 @@
       infrastructure, instead of having custom hardware appliances for each
       network function."</t></list></t>
 
-      <t>We should not confuse NFV and network virtualization, the
-      former, as the name suggests is about functions virtualization,
-      and not the network. </t>
-
-      <t>The idea of network virtualization is almost as old as the
-      networking technology itself.  Network virtualization is
-      hierarchical and multilayer in its nature, from layer 1 up to
-      services on top.  When talking about virtualization we usually
-      define overlay to underlay relationship between different
-      layers, bottom up.  A VPN (Virtual Private Network) <xref target="RFC4026"/> is
-      the most common form of network virtualization.  The general
-      benefits and desirability of VPNs have been described many times
-      and in many places (<xref target="RFC4110"/> and <xref target="RFC4664"/>).</t>
-      
-      <t>The only immutable infrastructure is the "physical" medium,
-      that could be dedicated or "sliced" to provide services(VPNs) in
-      a multi-tenant environment.</t>
-
-      <t>The term slicing has been used to describe a
+      <t>The related term slicing has been used to describe a
       virtualization concept in planned 5G networks. The 3GPP
       architecture specification <xref target="TS-3GPP.23.501"/>
       defines network slices as having potentially different
@@ -187,11 +134,6 @@
       set of services that are sharing the same set of requirements, on 
       top of a common network.</t>
 
-      <t>And, <xref target="I-D.geng-coms-problem-statement"/> defines
-      slicing as a management mechanism that an service provider can use to
-      allocate dedicated network resources from shared network
-      infrastructures to a tenant.</t>
-      
     </section>
 
     <section title="General Observations">
@@ -236,124 +178,44 @@
 
     <section title="Overview of IETF Virtualization Technologies">
 
-      <t>General networking protocols are largely agnostic to virtualization.
-      TCP/IP does not care whether it runs on a physical wire or on a
-      computer-created connection between virtual devices.</t>
-
-      <t>As a result, virtualization generally does not affect TCP/IP
-      itself or applications running on top. There are some
-      exceptions, though, such as when the need to virtualize has
-      caused previously held assumptions to break, and the Internet
-      community has had to provide new solutions. For instance, early
-      versions of the HTTP protocol assumed a single host served a
-      single website. The advent of virtual hosting and pressure to
-      not use large numbers of IPv4 addresses lead to HTTP 1.1
-      adopting virtual hosting, where the identified web host is
-      indicated inside the HTTP protocol rather than inferred from the
-      reception of a request at particular IP address <xref
-      target="VirtualHosting"/> <xref target="RFC2616"/>.</t>
-
-      <t>But where virtualization affects the Internet architecture
-      and implementations is at lower layers, the physical and MAC
-      layers, the systems that deal with the delivery of IP packets to
-      the right destination, management frameworks controlling
-      these systems, and data models designed to help the creation,
-      monitoring, or management of virtualized services.</t>
-
-      <t>What follows is an overview of existing technologies and
-      technologies currently under development that support
-      virtualization in its various forms.</t>
-
-	 <section title="Lower layers">
-
-	<t>Technologies for that assist separation and engineering of
-	networks at L2 ... client and tunnel identification, AAA, EAP,
-	IKEv2 ...</t>
-	
-      </section>
+    <t>We should not confuse NFV and network virtualization, the
+      former, as the name suggests is about functions virtualization,
+      and not the network. </t>
       
-      <section title="Traffic Separation in VPNs">
 
-	<t>Technologies that assist separation and engineering of
-	networks include both end-point and provider-based VPNs.
-	End-point VPN tehchnologies include, for instance, IPsec-based
-	VPNs <xref target="RFC4301"/>.</t>
+      <t>The idea of network virtualization is almost as old as the networking technology itself.
+	 Network virtualization is hierarchical and multilayer in its nature, from layer 0 up to services on top. 
+	 When talking about virtualization we usually define overlay to underlay relationship between different layers, bottom up.
+	 A VPN (Virtual Private Network)[RFC4026] is the most common form of network virtualization.
+	 The general benefits and desirability of VPNs have been described many times and in many places ([RFC4110] and [RFC4664])
+	 <vspace blankLines="1"/>
+	 The only immutable infrastructure is the "physical" medium, that could be dedicated or "sliced" to provide services(VPNs) in a multi-tenant environment.
+	 L1VPN facilitates virtualization of the underlying L0 "physical" medium
+	 L2 [IEEE802.1Q] facilitates virtualization of the underlying Ethernet network
+	 Tunneling over IP (MPLS, GRE, VxLAN, IPinIP, L2TP, etc)
+	 facilitates virtualization of the underlying IP network -
+	 MPLS LSP's - either traffic engineered or not belong here
+	 L2VPN facilitates virtualization of a L2 network
+	 L3VPN facilitates virtualization of a L3 network
+	 </t>
 
-	<t>For providing virtualised services, however, provider-based
-	solutions are often the most relevant ones. L1VPN facilitates
-	virtualization of the underlying L0 "physical" medium L2
-	[IEEE802.1Q] facilitates virtualization of the underlying
-	Ethernet network Tunneling over IP (MPLS, GRE, VxLAN, IPinIP,
-	L2TP, etc) facilitates virtualization of the underlying IP
-	network - MPLS LSP's - either traffic engineered or not belong
-	here L2VPN facilitates virtualization of a L2 network L3VPN
-	facilitates virtualization of a L3 network.
-	</t>
+      <t>Technologies for that assist separation and engineering of
+      networks: ... at L2 ... VPNs ... MPLS ... segment routing
+      ... traffic engineering and TEAS ... data models ... </t>
 
-	<t>The IETF has defined a multiplicity of technologies that can
-	be used for provider-based VPNs.  The technologies choices available
-	can be described along two axes, control mechanisms and dataplane
-	encapsulation mechanisms.  The two are not compeltely orthogonal.</t>
+      <t>Management tools: ... data models ...</t>
 
-	<t>In the data plane, for provider based VPNs, the first important
-	observation is that the most obvious encapsulation is NOT used.  While
-	IPSec could be used for provider-based VPNs, it does not appear to be
-	used in practice, and is not the focus for any of the available
-	control mechanisms.</t>
+       <t> YANG is a powerful and versatile data modeling language
+       that was designed from the requirements of network operators
+       for an easy to use and robust mechanism for provisioning
+       devices and services across networks.
+       It was originally designed at the Internet Engineering Task Force (IETF)
+       and has been so successful that it has been adopted as the
+       standard for modeling design in
+       many other standards bodies such as the Metro Ethernet Forum,
+       OpenDaylight, OpenConfig, and others.
+       The number of YANG modules being implemented for interfaces, devices, and service is exploding.
 
-	<t>The common encapsulation for provider-based VPNs is to use MPLS.  This
-	is particularly common for VPNs within one operator, and is sometimes
-	supported across operators.</t>
-
-	<t>Keyed GRE can be used, particularly for cross-operator cases.
-	However, it seems to be rare in practice.</t>
-
-	<t>The usage of MPLS for provider-based VPNs generally follows a pattern
-	of using two MPLS labels, one to represent the tunnel between the
-	ingress and egress provider-edge devices, and one to segregate the
-	different VPNs within that tunnel.</t>
-
-	<t>There are three cmmon mechanisms for controlling such VPNs. Two of
-	them use BGP, and one uses LDP.</t>
-
-	<t>The LDP usage to control VPN establishment falls within the PALS
-	working group, and is used to establish pseudo-wires to carry Ethernet
-	(or lower layer) traffic.  The Ethernet cases tend to be called VPLS
-	(Virtual Private LAN Service) for multi-point connectivity and VPWS
-	(Virtual Private Wire Service) for point-to-point connectivity.  These
-	mechanism do augment the data plane capabilites with control words
-	that support additional features.  In operation, LDP is used to signal
-	the communicating end-points that are interested in communicating with
-	each other in support of specific VPNs.  Information about the MAC
-	addresses used behind the provider edges is exchanged using classic
-	Ethernet flooding technology.  It has been proposed to use BGP to
-	bootstrap the exchang eof information as to who the communicating
-	endpoints are.</t>
-
-	<t>BGP can be used to establish Layer 2 or Layer 3 VPNs.  Originally, the
-	BGP based MPLS VPN technology was developed to support layer 3
-	VPNs. the BGP exchanges uses several different features in BGP
-	(specifically route distinguishers and route targets) to control the
-	distribution of information about VPN end-points.  The BGP information
-	carries the VPN IP address prefixes, and the MPLS labels to be used to
-	represent the VPN.  This technolgoy combination is generally known as
-	L3VPN.</t>
-
-	<t>This usage of BGP for VPNs has been extended to support Layer 2
-	VPNs. This is known as EVPN.  The BGP exchanges are used to carry the
-	MAC address reachability behind each provider edge router, providing
-	an Ethernet multipoint service without a need to flood
-	unkown-destination Ethernet packets.</t>
-
-	<t>In theory, the BGP mechanisms can also be used to support other
-	tunnels such as keyed GRE.  That is not widely practiced.</t>
-
-	<t>There are also hybrid variations, such as adding an ARP / ND proxy
-	service so that an L3VPN can be used with an L2 Access, when the only
-	desired service is IP.</t>
-	
-      </section>
-      
       <section title="Traffic Engineering and QoS">
 
 	<t>Technologies for that assist separation and engineering of
@@ -425,20 +287,7 @@
 	data models describing VPNs. The IETF and the industry in
 	general is currently specifying a set of YANG models for
 	network element and protocol configuration <xref
-	target="RFC6020"/>.</t>
-
-	<t>YANG is a powerful and versatile data modeling language
-	that was designed from the requirements of network operators
-	for an easy to use and robust mechanism for provisioning
-	devices and services across networks.  It was originally
-	designed at the Internet Engineering Task Force (IETF) and has
-	been so successful that it has been adopted as the standard
-	for modeling design in many other standards bodies such as the
-	Metro Ethernet Forum, OpenDaylight, OpenConfig, and others.
-	The number of YANG modules being implemented for interfaces,
-	devices, and service is exploding.</t>
-
-	<t>A service model is an abstract model, at a
+	target="RFC6020"/>. A service model is an abstract model, at a
 	higher level than network element or protocol configuration.
 	A service model for VPN service describes a VPN in a manner
 	that a customer of the VPN service would see it.</t>
@@ -457,7 +306,6 @@
 	<t>The L2SM WG specifies a service model for L2-based VPNs: 
 
 	<list style="empty">
-	  
 	  <t>The Layer Two Virtual Private Network Service Model
 	  (L2SM) working group is a short-lived WG. It is tasked to
 	  create a YANG data model that describes a L2VPN service (a
@@ -470,7 +318,6 @@
 	  common base model that addresses multiple popular L2VPN
 	  service types. The working group derives a single data model
 	  that includes support for the following:
-	  
 	  <list style="symbols">
 	    <t>point-to-point Virtual Private Wire Services (VPWS),</t>
 	    <t>multipoint Virtual Private LAN services (VPLS) that use LDP-signaled Pseudowires,</t>
@@ -505,6 +352,7 @@
 	</list></t>
 	
       </section>
+>>>>>>> origin/master
       
     </section>
     
@@ -632,27 +480,7 @@
 	setup built for a specific customer or purpose. </t>
 	
       </list></t>
-
-      <t>Some specific areas where work is likely needed include:
-      <list style="symbols">
-
-	<t>The ability to manage heterogenous technologies, e.g., across
-	SDN and traditionally built networks, or manage both
-	general-purpose and very technology-specific parameters such
-	as those associated with 5G radio.</t>
-
-	<t>The ability to specify "statistical" rather than hard
-	performance parameters.  In some networks -- notably with
-	wireless technology -- recent advances have made very high
-	peak rates possible, but with increased bursty-ness of traffic
-	and with potential bottlenecks on the aggregation parts of the
-	networks. The ability to specify statistical performance in
-	data models and in VPN configuration would be important,
-	over different timescales and probabilities.</t>
-	
-	<t>cross-domain ...</t>
-      </list></t>
-    
+      
     </section>
     
     <section anchor="ack" title="Acknowledgements">
@@ -670,29 +498,17 @@
 
     <references title="Informative References">
 
+<<<<<<< HEAD
+=======
      <?rfc include="reference.RFC.2616"?>
-     <?rfc include="reference.RFC.4026"?>
-     <?rfc include="reference.RFC.4110"?>
-     <?rfc include="reference.RFC.4301"?>
-     <?rfc include="reference.RFC.4664"?>
      <?rfc include="reference.RFC.4761"?>
      <?rfc include="reference.RFC.6020"?>
      <?rfc include="reference.RFC.6624"?>
      <?rfc include="reference.RFC.7432"?>
      <?rfc include="reference.RFC.8049"?>
      <?rfc include="reference.I-D.ietf-sfc-nsh"?>
-     <?rfc include="reference.I-D.geng-coms-problem-statement"?>
+>>>>>>> origin/master
      <?rfc include="reference.I-D.king-teas-applicability-actn-slicing"?>
-      <reference anchor="VirtualHosting">
-	<front>
-	  <title>Virtual Hosting</title>
-	  <author>
-	    <organization>Wikipedia</organization>
-	  </author>
-	  <date month="August" year="2017" />
-	</front>
-	<seriesInfo name="Wikipedia" value="article https://en.wikipedia.org/wiki/Virtual_hosting" />
-      </reference>
       <reference anchor="TS-3GPP.23.501">
 	<front>
 	  <title>3rd Generation Partnership Project;
