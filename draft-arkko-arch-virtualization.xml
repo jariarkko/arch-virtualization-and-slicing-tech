@@ -280,10 +280,12 @@
 	VPNs <xref target="RFC4301"/>.</t>
 
 	<t>For providing virtualised services, however, provider-based
-	solutions are often the most relevant ones. L1VPN facilitates
-	virtualization of the underlying L0 "physical" medium L2
-	[IEEE802.1Q] facilitates virtualization of the underlying
-	Ethernet network Tunneling over IP (MPLS, GRE, VxLAN, IPinIP,
+	solutions are often the most relevant ones.
+	L1VPN facilitates
+	virtualization of the underlying L0 "physical" medium.
+	L2[IEEE802.1Q] facilitates virtualization of the underlying
+	Ethernet network
+	Tunneling over IP (MPLS, GRE, VxLAN, IPinIP,
 	L2TP, etc) facilitates virtualization of the underlying IP
 	network - MPLS LSP's - either traffic engineered or not belong
 	here L2VPN facilitates virtualization of a L2 network L3VPN
@@ -299,7 +301,8 @@
 	observation is that the most obvious encapsulation is NOT used.  While
 	IPSec could be used for provider-based VPNs, it does not appear to be
 	used in practice, and is not the focus for any of the available
-	control mechanisms.</t>
+	control mechanisms. Often, when end2end encryption is required
+	it is used as an overlay over MPLS based L3VPN</t>
 
 	<t>The common encapsulation for provider-based VPNs is to use MPLS.  This
 	is particularly common for VPNs within one operator, and is sometimes
@@ -309,12 +312,12 @@
 	However, it seems to be rare in practice.</t>
 
 	<t>The usage of MPLS for provider-based VPNs generally follows a pattern
-	of using two MPLS labels, one to represent the tunnel between the
-	ingress and egress provider-edge devices, and one to segregate the
-	different VPNs within that tunnel.</t>
+	of using two (or more)  MPLS labels, top (transport) label to represent the remote
+	end point/egress provider-edge device, and bottom (service) label to signal the
+	different VPNs on the remote end point. Using TE might result in a deeper label stack.</t>
 
-	<t>There are three cmmon mechanisms for controlling such VPNs. Two of
-	them use BGP, and one uses LDP.</t>
+	<t>L2 VPNs could be signaled thru LDP[RFC4762] or MP-BGP[RFC4761], L3 VPN is
+	signaled thru MP-BGP[RFC4364]</t>
 
 	<t>The LDP usage to control VPN establishment falls within the PALS
 	working group, and is used to establish pseudo-wires to carry Ethernet
@@ -332,7 +335,7 @@
 
 	<t>BGP can be used to establish Layer 2 or Layer 3 VPNs.  Originally, the
 	BGP based MPLS VPN technology was developed to support layer 3
-	VPNs. the BGP exchanges uses several different features in BGP
+	VPNs. the BGP exchanges uses several different features in MP-BGP
 	(specifically route distinguishers and route targets) to control the
 	distribution of information about VPN end-points.  The BGP information
 	carries the VPN IP address prefixes, and the MPLS labels to be used to
