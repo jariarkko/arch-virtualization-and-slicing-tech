@@ -80,7 +80,9 @@
     <abstract>
 
       <t>This document makes some observations on the effects
-      virtualization on Internet architecture.</t>
+      virtualization on Internet architecture, as well as provides
+      some guidelines for further work at the IETF relating to
+      virtualization.</t>
 
       <t>This document also provides a summary of IETF technologies
       that relate to network virtualization.  An understanding of what
@@ -101,7 +103,9 @@
       technology, and topology choices.</t>
 
       <t>This document makes some observations on the effects
-      virtualization on Internet architecture.</t>
+      virtualization on Internet architecture, as well as provides
+      some guidelines for further work at the IETF relating to
+      virtualization.</t>
 
       <t>This document also provides a summary of IETF technologies
       that relate to network virtualization.  An understanding of what
@@ -230,6 +234,16 @@
 	mechanisms and data models that can assist in setting up and
 	administering virtualized systems.</t>
 
+	<t hangText="Protocols vs. Representations of Virtual Networks"><vspace blankLines="1"/>
+
+	Some of virtualization technology benefits from protocol support
+	either in the data or control plane. But there are also management
+	constructs, such as data models representing virtual services or networks and
+	data models useful in the construction of such services. There are also
+	conceptual definitions that may be needed when constructing either
+	protocols or data models or when discussing service agreements
+	between providers and consumers.</t>
+	
       </list></t>
       
     </section>
@@ -266,9 +280,14 @@
 
 	 <section title="Lower layers">
 
-	<t>Technologies for that assist separation and engineering of
-	networks at L2 ... client and tunnel identification, AAA, EAP,
-	IKEv2 ...</t>
+	   <t>Some L2 technology allows the identification of traffic
+	   belonging to a particular virtual network or
+	   connection. For instance, Ethernet VLAN tags. There are
+	   some IETF technologies that also allow similar
+	   identification of connections setup with the help of IETF
+	   protocols. For instance, Network Access Identifiers may
+	   identify a particular customer or virtual service within
+	   AAA, EAP or IKEv2 VPN connections.</t>
 	
       </section>
       
@@ -359,17 +378,15 @@
       
       <section title="Traffic Engineering and QoS">
 
-	<t>Technologies for that assist separation and engineering of
-	networks: ... at L2 ... VPNs ... MPLS ... segment routing
-	... traffic engineering and TEAS ... data models ... </t>
+	<t>Traffic Engineering (TE) is the term used to refer to techniques
+	  that enable operators to control how specific traffic flows are
+	  treated within their networks.</t>
 
 	<t>The TEAS working group works on enhancements to
 	traffic-engineering capabilities for MPLS and GMPLS networks:
 	<list style="empty">
 
-	  <t>Traffic Engineering (TE) is the term used to refer to techniques
-	  that enable operators to control how specific traffic flows are
-	  treated within their networks. TE is applied to packet networks
+	  <t>TE is applied to packet networks
 	  via MPLS TE tunnels and LSPs. The MPLS-TE control plane was
 	  generalized to additionally support non-packet technologies via
 	  GMPLS.  RSVP-TE is the signaling protocol used for both MPLS-TE
@@ -393,6 +410,10 @@
 
 	  </list></t>
 	</list></t>
+
+	<t>Traffic engineering is a common requirement for many
+	routing systems, and also discussed, e.g., in the context of
+	LISP.</t>
 	  
       </section>
       
@@ -421,8 +442,6 @@
       </section>
       
       <section title="Management Frameworks and Data Models">
-
-	<t>Management tools: ... data models ...</t>
 
 	<t>There have been two working groups at the IETF, focusing on
 	data models describing VPNs. The IETF and the industry in
@@ -513,10 +532,21 @@
     
     <section title="Architectural Observations">
 
+      <t>This section makes some observations about architectural
+      trends and issues.</t>
+      
       <t><list style="hanging">
 
-	<t hangText="Role of Software"><vspace blankLines="1"/>
-	...</t>
+	<t hangText="Role of Software"><vspace blankLines="1"/> An
+	obvious trend is that bigger and bigger parts of the
+	functionality in a network is driven by software, e.g.,
+	orchestration or management tools that figure out how to
+	control relatively simple network element functionality. The
+	software components are where the intelligence is, and a
+	smaller fraction of the intelligence resides in network
+	elements, nor is the intelligence encoded in the behaviour
+	rules of the protocols that the network elements use to
+	communicate with each other.</t>
 	
 	<t hangText="Centralization of Functions"><vspace blankLines="1"/>
 
@@ -560,9 +590,45 @@
 	specialised service -- at least if it requires human effort --
 	for large fraction of use cases. Even if those are very useful
 	in critical applications.</t>
+
+	<t hangText="Need for descriptions"><vspace blankLines="1"/>
+
+	As networks deal more and more with virtual services, there arises a
+	need to have generally understood, portable descriptions of these
+	service. Hence the creation of YANG data models representing abstract
+	VPN services, for instance.</t>
 	
       </list></t>
 
+      <t>We can also identify some potential architectural principles, such as:
+      <list style="hanging">
+	
+	<t hangText="Data model layering"><vspace blankLines="1"/>
+	
+	Given the heterogenuity of networking technologies and the differing
+	users that data models are being designed for, it seems difficult to
+	provide a single-level model. It seems preferable to construct
+	a layered set of models, for instance abstract, user-facing models
+	that specify services that can then be mapped to concrete configuration
+	model for networks. And these can in turn be mapped to individual
+	network element configuration models.<vspace blankLines="1"/>
+
+	Getting this layered design right is crucial for our ability to
+	evolve a useful set of data models.</t>
+	
+	<t hangText="General over specific"><vspace blankLines="1"/>
+	
+	In the quick pace of important developments, it is tempting to focus
+	on specific concepts and service offerings such as 5G slicing.<vspace blankLines="1"/>
+
+	But a preferrable approach seems to provide general-purpose tools
+	that can  be used by 5G and other networks, and whose longetivity exceeds that
+	of a version of a specific offering. The quick development pace is likely driving the evolution
+	of concepts in any case, and building IETF tools that provide the ability to deal with different
+	technologies is most useful.</t>
+	
+      </list></t>
+      
     </section>
 
     <section anchor="furtherwork" title="Further Work">
@@ -653,9 +719,24 @@
 	data models and in VPN configuration would be important,
 	over different timescales and probabilities.</t>
 	
-	<t>cross-domain ...</t>
+	<t>Cross-domain: A big problem is that we have little tools for
+	cross-domain management of virtualized networks and resources.</t>
+	
       </list></t>
-    
+
+      <t>Finally, there is a question of where all this work should reside.
+      There's an argument that IETF-based virtualization technologies deserve
+      proper management tools, including data models.</t>
+
+      <t>And there's another argument that with the extensive use of
+      virtualization technology, solutions that can manage many
+      different networks should be general, and as such, potential
+      IETF work material. Yet, the IETF is not and should not be in
+      the space of replacing various tools and open source toolkits
+      that have been created for managing virtualization. It seems
+      though that work on commonly usable data models at several
+      layers of abstraction would be good work at the IETF.</t>
+      
     </section>
     
     <section anchor="ack" title="Acknowledgements">
