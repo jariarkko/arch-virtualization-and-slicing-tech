@@ -5,11 +5,11 @@
 Internet Engineering Task Force                                 J. Arkko
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               J. Tantsura
-Expires: May 19, 2018                         Futurewei, Future Networks
+Expires: May 20, 2018                         Futurewei, Future Networks
                                                               J. Halpern
                                                                 B. Varga
                                                                 Ericsson
-                                                       November 15, 2017
+                                                       November 16, 2017
 
 
           Considerations on Network Virtualization and Slicing
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 19, 2018.
+   This Internet-Draft will expire on May 20, 2018.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Arkko, et al.             Expires May 19, 2018                  [Page 1]
+Arkko, et al.             Expires May 20, 2018                  [Page 1]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Arkko, et al.             Expires May 19, 2018                  [Page 2]
+Arkko, et al.             Expires May 20, 2018                  [Page 2]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -165,7 +165,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                  [Page 3]
+Arkko, et al.             Expires May 20, 2018                  [Page 3]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -221,7 +221,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                  [Page 4]
+Arkko, et al.             Expires May 20, 2018                  [Page 4]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -277,7 +277,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                  [Page 5]
+Arkko, et al.             Expires May 20, 2018                  [Page 5]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -293,7 +293,7 @@ Internet-Draft           Network Virtualization            November 2017
    include both end-point and provider-based VPNs.  End-point VPN
    tehchnologies include, for instance, IPsec-based VPNs [RFC4301].
 
-   For providing virtualised services, however, provider-based solutions
+   For providing virtualized services, however, provider-based solutions
    are often the most relevant ones.  L1VPN facilitates virtualization
    of the underlying L0 "physical" medium.  L2[IEEE802.1Q] facilitates
    virtualization of the underlying Ethernet network Tunneling over IP
@@ -333,7 +333,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                  [Page 6]
+Arkko, et al.             Expires May 20, 2018                  [Page 6]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -389,7 +389,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                  [Page 7]
+Arkko, et al.             Expires May 20, 2018                  [Page 7]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -445,7 +445,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                  [Page 8]
+Arkko, et al.             Expires May 20, 2018                  [Page 8]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -501,7 +501,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                  [Page 9]
+Arkko, et al.             Expires May 20, 2018                  [Page 9]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -557,7 +557,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                 [Page 10]
+Arkko, et al.             Expires May 20, 2018                 [Page 10]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -613,7 +613,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                 [Page 11]
+Arkko, et al.             Expires May 20, 2018                 [Page 11]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -669,7 +669,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                 [Page 12]
+Arkko, et al.             Expires May 20, 2018                 [Page 12]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -725,7 +725,7 @@ Internet-Draft           Network Virtualization            November 2017
 
 
 
-Arkko, et al.             Expires May 19, 2018                 [Page 13]
+Arkko, et al.             Expires May 20, 2018                 [Page 13]
 
 Internet-Draft           Network Virtualization            November 2017
 
@@ -755,10 +755,11 @@ Internet-Draft           Network Virtualization            November 2017
 
 7.  Acknowledgements
 
-   The author would like to thank Gonzalo Camarillo, Joel Halpern, Jeff
-   Tantsura, Gabriel Montenegro, Alex Galis, Adrian Farrell, Yi Zhao,
-   Hannu Flinck, and many others for interesting discussions in this
-   problem space.
+   The authors would like to thank Gonzalo Camarillo, Gabriel
+   Montenegro, Alex Galis, Adrian Farrell, Liang Geng, Yi Zhao, Hannu
+   Flinck, Yi Zhao, Barry Leiba, Georg Mayer, Benoit Claise, Warren
+   Kumari, Ted Hardie, and many others for interesting discussions in
+   this problem space.
 
 8.  Informative References
 
@@ -775,16 +776,19 @@ Internet-Draft           Network Virtualization            November 2017
               statement-00 (work in progress), September 2017.
 
    [I-D.ietf-sfc-nsh]
-              Quinn, P., Elzur, U., and C. Pignataro, "Network Service
-              Header (NSH)", draft-ietf-sfc-nsh-28 (work in progress),
-              November 2017.
 
 
 
-Arkko, et al.             Expires May 19, 2018                 [Page 14]
+
+
+Arkko, et al.             Expires May 20, 2018                 [Page 14]
 
 Internet-Draft           Network Virtualization            November 2017
 
+
+              Quinn, P., Elzur, U., and C. Pignataro, "Network Service
+              Header (NSH)", draft-ietf-sfc-nsh-28 (work in progress),
+              November 2017.
 
    [I-D.king-teas-applicability-actn-slicing]
               King, D. and Y. Lee, "Applicability of Abstraction and
@@ -827,6 +831,17 @@ Internet-Draft           Network Virtualization            November 2017
               DOI 10.17487/RFC6020, October 2010, <https://www.rfc-
               editor.org/info/rfc6020>.
 
+
+
+
+
+
+
+Arkko, et al.             Expires May 20, 2018                 [Page 15]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
    [RFC6624]  Kompella, K., Kothari, B., and R. Cherukuri, "Layer 2
               Virtual Private Networks Using BGP for Auto-Discovery and
               Signaling", RFC 6624, DOI 10.17487/RFC6624, May 2012,
@@ -834,14 +849,6 @@ Internet-Draft           Network Virtualization            November 2017
 
    [RFC7432]  Sajassi, A., Ed., Aggarwal, R., Bitar, N., Isaac, A.,
               Uttaro, J., Drake, J., and W. Henderickx, "BGP MPLS-Based
-
-
-
-Arkko, et al.             Expires May 19, 2018                 [Page 15]
-
-Internet-Draft           Network Virtualization            November 2017
-
-
               Ethernet VPN", RFC 7432, DOI 10.17487/RFC7432, February
               2015, <https://www.rfc-editor.org/info/rfc7432>.
 
@@ -882,6 +889,15 @@ Authors' Addresses
    Email: joel.halpern@ericsson.com
 
 
+
+
+
+
+Arkko, et al.             Expires May 20, 2018                 [Page 16]
+
+Internet-Draft           Network Virtualization            November 2017
+
+
    Balazs Varga
    Ericsson
    Budapest  1097
@@ -893,4 +909,44 @@ Authors' Addresses
 
 
 
-Arkko, et al.             Expires May 19, 2018                 [Page 16]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Arkko, et al.             Expires May 20, 2018                 [Page 17]

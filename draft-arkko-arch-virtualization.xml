@@ -298,13 +298,11 @@
 	End-point VPN tehchnologies include, for instance, IPsec-based
 	VPNs <xref target="RFC4301"/>.</t>
 
-	<t>For providing virtualised services, however, provider-based
-	solutions are often the most relevant ones.
-	L1VPN facilitates
+	<t>For providing virtualized services, however, provider-based
+	solutions are often the most relevant ones.  L1VPN facilitates
 	virtualization of the underlying L0 "physical" medium.
 	L2[IEEE802.1Q] facilitates virtualization of the underlying
-	Ethernet network
-	Tunneling over IP (MPLS, GRE, VxLAN, IPinIP,
+	Ethernet network Tunneling over IP (MPLS, GRE, VxLAN, IPinIP,
 	L2TP, etc) facilitates virtualization of the underlying IP
 	network - MPLS LSP's - either traffic engineered or not belong
 	here L2VPN facilitates virtualization of a L2 network L3VPN
@@ -494,15 +492,22 @@
 	  that includes support for the following:
 	  
 	  <list style="symbols">
+
 	    <t>point-to-point Virtual Private Wire Services (VPWS),</t>
-	    <t>multipoint Virtual Private LAN services (VPLS) that use LDP-signaled Pseudowires,</t>
+
+	    <t>multipoint Virtual Private LAN services (VPLS) that use
+	    LDP-signaled Pseudowires,</t>
+
 	    <t>multipoint Virtual Private LAN services (VPLS) that use
 	    a Border Gateway Protocol (BGP) control plane as described
 	    in <xref target="RFC4761"/> and <xref target="RFC6624"/>,</t>
+
 	    <t>Ethernet VPNs specified in <xref target="RFC7432"/>.</t>
+
 	  </list></t>
 	  
-	  <t>Other L2VPN service types may be included if there is consensus in the working group.</t>
+	  <t>Other L2VPN service types may be included if there is
+	  consensus in the working group.</t>
 
 	</list></t>
 
@@ -621,11 +626,13 @@
 	In the quick pace of important developments, it is tempting to focus
 	on specific concepts and service offerings such as 5G slicing.<vspace blankLines="1"/>
 
-	But a preferrable approach seems to provide general-purpose tools
-	that can  be used by 5G and other networks, and whose longetivity exceeds that
-	of a version of a specific offering. The quick development pace is likely driving the evolution
-	of concepts in any case, and building IETF tools that provide the ability to deal with different
-	technologies is most useful.</t>
+	But a preferrable approach seems to provide general-purpose
+	tools that can be used by 5G and other networks, and whose
+	longetivity exceeds that of a version of a specific
+	offering. The quick development pace is likely driving the
+	evolution of concepts in any case, and building IETF tools
+	that provide the ability to deal with different technologies
+	is most useful.</t>
 	
       </list></t>
       
@@ -741,9 +748,10 @@
     
     <section anchor="ack" title="Acknowledgements">
 
-      <t>The author would like to thank Gonzalo Camarillo, Joel Halpern, Jeff
-      Tantsura, Gabriel Montenegro, Alex Galis, Adrian Farrell, Yi
-      Zhao, Hannu Flinck, and many others for interesting
+      <t>The authors would like to thank Gonzalo Camarillo, Gabriel
+      Montenegro, Alex Galis, Adrian Farrell, Liang Geng, Yi Zhao,
+      Hannu Flinck, Yi Zhao, Barry Leiba, Georg Mayer, Benoit Claise,
+      Warren Kumari, Ted Hardie, and many others for interesting
       discussions in this problem space.</t>
 
     </section>
