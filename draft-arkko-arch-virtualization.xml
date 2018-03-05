@@ -11,7 +11,7 @@
 <?rfc sortrefs="yes" ?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="info" docName="draft-arkko-arch-virtualization" ipr="trust200902">
+<rfc category="info" docName="draft-arkko-arch-virtualization-01" ipr="trust200902">
 
   <front>
 
@@ -71,7 +71,7 @@
       </address>
     </author>
     
-    <date month="November" year="2017" />
+    <date month="March" year="2018" />
 
     <area>Internet</area>
 
@@ -234,6 +234,31 @@
 	mechanisms and data models that can assist in setting up and
 	administering virtualized systems.</t>
 
+	<t hangText="Selection vs. Creation and Orchestration"><vspace
+	blankLines="1"/> Two primary tasks should be differentiated in
+	virtualization: selection of a particular virtual instance,
+	and the tasks related to how that virtual instance was created
+	and continues to be managed.<vspace blankLines="1"/>
+
+	Selection involves choosing a particular virtual instance, or
+	an entrypoint to a virtual network. In its simplest form, a
+	customer could hardwired by configuration to a particular virtual instance.
+	In more complex cases, the connecting devices may have some
+	settings that affect the choice. Typically both the connecting devices
+	and the network they are connecting to it have a say in the choice.
+	<vspace blankLines="1"/>
+	
+	The selection choice may even be dynamic in some cases. For
+	instance, traffic pattern analysis may affect the selection.
+	<vspace blankLines="1"/>
+
+	Typically, however, connecting devices do not have a say in
+	the virtual instance does. An instance is specified, created,
+	and needs to be continously managed and orchestrated. The creation
+	can be manual and occur rarely, or more dynamic, e.g., a
+	an instance can be actually instantiated only when the first
+	connecting device connects to it.</t>
+	
 	<t hangText="Protocols vs. Representations of Virtual Networks"><vspace blankLines="1"/>
 
 	Some of virtualization technology benefits from protocol support
@@ -248,6 +273,42 @@
       
     </section>
 
+    <section title="Slicing in 5G Networks">
+
+      <t>Goals for the support of slicing in 5G relate to enabling a
+      separation of concerns, allow the creation of dedicated services
+      for special traffic types, to allow faster evolution of the
+      network mechanisms by easing gradual migration to new
+      functionality, and enabling faster time to market for new new
+      functionality.</t>
+      
+      <t>In 5G, slice selection happens as a combination of settings
+      in the User Equipment (UE) and the network. Settings in the UE
+      relate to chosen Access Point Name (APN), Dedicated Core Network
+      Indicator (DCN-ID) <xref target="TS-3GPP.23.401"/>, and, with
+      5G, a slice indicator (Network Slice Selection Assistance
+      Information or NSSAI) <xref target="TS-3GPP.23.501"/>. This
+      information is combined with the information configured for a
+      given subscriber, and the policies of the networks involved, and
+      ultimately a slice is selected.</t>
+
+      <t>A 5G access network carries a user's connection attempt to
+      the 5G core network and the Access Management Function (AMF)
+      function. This node collects information provided by the UE and
+      the subscriber database from home network, and consults the
+      Network Slice Selection Function (NSSF) to make a decision about
+      the desired slice. When the selection has been made, this may
+      also mean that the connection is moved to a different AMF;
+      enabling separate networks to have entirely different
+      network-level service.</t>
+      
+      <t>The creation and orchestration of slices does not happen
+      at this signalling plane, but rather the slices are separately
+      specified, created, and managed, typically with the help of
+      an orchestrator function.</t>
+      
+    </section>
+    
     <section title="Overview of IETF Virtualization Technologies">
 
       <t>General networking protocols are largely agnostic to virtualization.
@@ -515,7 +576,7 @@
 	L3-based VPNs.
 
 	<list style="empty">
-
+	  
 	  <t> The Layer Three Virtual Private Network Service Model
 	  (L3SM) working group is a short-lived WG tasked to create a
 	  YANG data model that describes a L3VPN service (a L3VPN
@@ -528,7 +589,7 @@
 	  not provide details for configuring network elements or
 	  protocols. Instead it contains the characteristics of the
 	  service.</t>
-
+	  
 	</list></t>
 	
       </section>
@@ -536,12 +597,12 @@
     </section>
     
     <section title="Architectural Observations">
-
+      
       <t>This section makes some observations about architectural
       trends and issues.</t>
       
       <t><list style="hanging">
-
+	
 	<t hangText="Role of Software"><vspace blankLines="1"/> An
 	obvious trend is that bigger and bigger parts of the
 	functionality in a network is driven by software, e.g.,
@@ -751,8 +812,8 @@
       <t>The authors would like to thank Gonzalo Camarillo, Gabriel
       Montenegro, Alex Galis, Adrian Farrell, Liang Geng, Yi Zhao,
       Hannu Flinck, Yi Zhao, Barry Leiba, Georg Mayer, Benoit Claise,
-      Warren Kumari, Ted Hardie, and many others for interesting
-      discussions in this problem space.</t>
+      Daniele Ceccarelli, Warren Kumari, Ted Hardie, and many others
+      for interesting discussions in this problem space.</t>
 
     </section>
 
@@ -775,7 +836,8 @@
      <?rfc include="reference.I-D.ietf-sfc-nsh"?>
      <?rfc include="reference.I-D.geng-coms-problem-statement"?>
      <?rfc include="reference.I-D.king-teas-applicability-actn-slicing"?>
-      <reference anchor="VirtualHosting">
+
+     <reference anchor="VirtualHosting">
 	<front>
 	  <title>Virtual Hosting</title>
 	  <author>
@@ -785,19 +847,7 @@
 	</front>
 	<seriesInfo name="Wikipedia" value="article https://en.wikipedia.org/wiki/Virtual_hosting" />
       </reference>
-      <reference anchor="TS-3GPP.23.501">
-	<front>
-	  <title>3rd Generation Partnership Project;
-Technical Specification Group Services and System Aspects;
-System Architecture for the 5G System;
-Stage 2 (Release 15)</title>
-	  <author>
-	    <organization>3GPP</organization>
-	  </author>
-	  <date month="July" year="2017" />
-	</front>
-	<seriesInfo name="3GPP" value="Technical Specification 23.501" />
-      </reference>
+
       <reference anchor="CC2015">
         <front>
           <title>Adding Enhanced Services to the Internet: Lessons from History</title>
@@ -807,6 +857,38 @@ Stage 2 (Release 15)</title>
         </front>
         <format type='PDF'
 		target='https://www.caida.org/publications/papers/2015/adding_enhanced_services_internet/adding_enhanced_services_internet.pdf'/>
+      </reference>
+
+      <reference anchor="TS-3GPP.23.401">
+	<front>
+	  <title>
+	    3rd Generation Partnership Project;
+	    Technical Specification Group Services and System Aspects;
+	    General Packet Radio Service (GPRS) enhancements for Evolved Universal Terrestrial Radio Access Network (E-UTRAN) access; (Release 15)</title>
+	  <author>
+	    <organization>3GPP</organization>
+	  </author>
+	  <date month="December" year="2017" />
+	</front>
+	
+	<seriesInfo name="3GPP" value="Technical Specification 23.401" />
+	
+      </reference>
+
+      <reference anchor="TS-3GPP.23.501">
+	<front>
+	  <title>3rd Generation Partnership Project;
+	  Technical Specification Group Services and System Aspects;
+	  3G Security; Security architecture and procedures for 5G System; 
+	  (Release 15)</title>
+	  <author>
+	    <organization>3GPP</organization>
+	  </author>
+	  <date month="December" year="2017" />
+	</front>
+	
+	<seriesInfo name="3GPP" value="Technical Specification 23.501" />
+	
       </reference>
     </references>
 
