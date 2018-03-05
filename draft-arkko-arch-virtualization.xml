@@ -786,6 +786,24 @@
 	networks. The ability to specify statistical performance in
 	data models and in VPN configuration would be important,
 	over different timescales and probabilities.</t>
+
+	<t>Mapping from high abstraction level specifications to concrete network
+	configurations.<vspace blankLines="1"/>
+
+	There is a lot of work on data models and templates at various levels and
+	in different representations. There are also many systems built to manage
+	these models and orchestrate network configuration. But the mapping of the
+	abstract models to concrete network configurations remains a hard problem,
+	and it certainly will need more work.<vspace blankLines="1"/>
+
+	There are even some questions about how to go about this. Is
+	it enough that we specify models, and leave the mapping to
+	"magic" of the software? Are the connections something that
+	different vendors compete in producing good products in? Or are
+	the mapping algorithms something that needs to be specified
+	together, and their ability to work with different types of
+	network equipment verified in some manner?	
+	</t>
 	
 	<t>Cross-domain: A big problem is that we have little tools for
 	cross-domain management of virtualized networks and resources.</t>
@@ -836,6 +854,8 @@
      <?rfc include="reference.I-D.ietf-sfc-nsh"?>
      <?rfc include="reference.I-D.geng-coms-problem-statement"?>
      <?rfc include="reference.I-D.king-teas-applicability-actn-slicing"?>
+     <?rfc include="reference.I-D.bryskin-teas-use-cases-sf-aware-topo-model"?>
+     <?rfc include="reference.I-D.bryskin-teas-sf-aware-topo-model"?>
 
      <reference anchor="VirtualHosting">
 	<front>
