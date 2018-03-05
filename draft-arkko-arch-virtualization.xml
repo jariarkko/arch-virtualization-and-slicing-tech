@@ -529,12 +529,18 @@
 	for modeling design in many other standards bodies such as the
 	Metro Ethernet Forum, OpenDaylight, OpenConfig, and others.
 	The number of YANG modules being implemented for interfaces,
-	devices, and service is exploding.</t>
+	devices, and service is growing rapidly.</t>
 
-	<t>A service model is an abstract model, at a
-	higher level than network element or protocol configuration.
-	A service model for VPN service describes a VPN in a manner
-	that a customer of the VPN service would see it.</t>
+	<t>(It should be noted that there are also other description
+	formats, e.g., Topology and Orchestration Specification for
+	Cloud Applications (TOSCA) <xref target="TOSCA-1.0"/> <xref
+	target="TOSCA-Profile-1.1"/>, common in many higher abstract
+	level network service descriptions.)</t>
+	
+	<t>A service model is an abstract model, at a higher level
+	than network element or protocol configuration.  A service
+	model for VPN service describes a VPN in a manner that a
+	customer of the VPN service would see it.</t>
 
 	<t>It needs to be clearly understood that such a service model
 	is not a configuration model. That is, it does not provide
@@ -922,7 +928,35 @@
 	<seriesInfo name="3GPP" value="Technical Specification 23.501" />
 	
       </reference>
-    </references>
 
+      <reference anchor="TOSCA-1.0">
+	<front>
+	  <title>Topology and Orchestration Specification for Cloud Applications Version 1.0</title>
+	  <author>
+	    <organization>OASIS</organization>
+	  </author>
+	  <date month="November" year="2013" />
+	</front>
+	
+	<seriesInfo name="OASIS" value="OASIS Standard, http://docs.oasis-open.org/tosca/TOSCA/v1.0/os/TOSCA-v1.0-os.html" />
+	
+      </reference>
+
+
+      <reference anchor="TOSCA-Profile-1.1">
+	<front>
+	  <title>TOSCA Simple Profile in YAML Version 1.1</title>
+	  <author>
+	    <organization>OASIS</organization>
+	  </author>
+	  <date month="January" year="2018" />
+	</front>
+	
+	<seriesInfo name="OASIS" value="OASIS Standard, http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.1/TOSCA-Simple-Profile-YAML-v1.1.html" />
+	
+      </reference>
+
+    </references>
+    
   </back>
 </rfc>
