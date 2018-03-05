@@ -40,7 +40,7 @@
     </author>
 
     <author fullname="Jeff Tantsura" initials="J." surname="Tantsura">
-      <organization>Futurewei, Future Networks</organization>
+      <organization>Nuagenetworks</organization>
       <address>
         <email>jefftant.ietf@gmail.com</email>
       </address>
@@ -79,7 +79,7 @@
 
     <abstract>
 
-      <t>This document makes some observations on the effects
+      <t>This document makes some observations on the effects of
       virtualization on Internet architecture, as well as provides
       some guidelines for further work at the IETF relating to
       virtualization.</t>
@@ -102,7 +102,7 @@
       networks, with independent lifecycle management and resource,
       technology, and topology choices.</t>
 
-      <t>This document makes some observations on the effects
+      <t>This document makes some observations on the effects of
       virtualization on Internet architecture, as well as provides
       some guidelines for further work at the IETF relating to
       virtualization.</t>
@@ -202,7 +202,7 @@
       <t><list style="hanging">
 	
 	<t hangText="Software vs. Protocols"><vspace blankLines="1"/>
-
+	
 	Many of the necessary tools for using virtualization
 	are software, e.g., tools that enable running processes or
 	entire machines in a virtual environment decoupled from physical
@@ -227,25 +227,31 @@
 	mobile networks have a choice of Access Point Names
 	(APNs). These techniques allow users and traffic to be put on
 	specific networks, which in turn may comprise of virtual
-	components. <vspace blankLines="1"/>
+	components.<vspace blankLines="1"/>
 	
 	Other examples of protocols providing helpful techniques
 	include virtual private networking mechanisms or management
 	mechanisms and data models that can assist in setting up and
-	administering virtualized systems.</t>
+	administering virtualized systems.<vspace blankLines="1"/>
+
+	There may also be situations where scaling demands changes
+	in protocols. An ability to replicate many instances may
+	push the limits of protocol mechanisms that were designed
+	primarily or originally for physical networks.</t>
 
 	<t hangText="Selection vs. Creation and Orchestration"><vspace
-	blankLines="1"/> Two primary tasks should be differentiated in
-	virtualization: selection of a particular virtual instance,
+	blankLines="1"/> Two primary tasks in virtualization should be
+	differentiated: selection of a particular virtual instance,
 	and the tasks related to how that virtual instance was created
 	and continues to be managed.<vspace blankLines="1"/>
 
 	Selection involves choosing a particular virtual instance, or
 	an entrypoint to a virtual network. In its simplest form, a
-	customer could hardwired by configuration to a particular virtual instance.
-	In more complex cases, the connecting devices may have some
-	settings that affect the choice. Typically both the connecting devices
-	and the network they are connecting to it have a say in the choice.
+	customer could be hardwired by configuration to a particular
+	virtual instance.  In more complex cases, the connecting
+	devices may have some settings that affect the choice. In the
+	general case, both the connecting devices and the network they
+	are connecting to it have a say in the choice.
 	<vspace blankLines="1"/>
 	
 	The selection choice may even be dynamic in some cases. For
@@ -253,54 +259,67 @@
 	<vspace blankLines="1"/>
 
 	Typically, however, connecting devices do not have a say in
-	the virtual instance does. An instance is specified, created,
-	and needs to be continously managed and orchestrated. The creation
-	can be manual and occur rarely, or more dynamic, e.g., a
-	an instance can be actually instantiated only when the first
-	connecting device connects to it.</t>
+	what the virtual instance does. This is directed by the
+	network operator and its customers. An instance is specified,
+	created, and needs to be continously managed and
+	orchestrated. The creation can be manual and occur rarely, or
+	be more dynamic, e.g., an instance can actually be
+	instantiated automatically, and only when the first connecting
+	device connects to it.</t>
 	
-	<t hangText="Protocols vs. Representations of Virtual Networks"><vspace blankLines="1"/>
-
-	Some of virtualization technology benefits from protocol support
-	either in the data or control plane. But there are also management
-	constructs, such as data models representing virtual services or networks and
-	data models useful in the construction of such services. There are also
-	conceptual definitions that may be needed when constructing either
-	protocols or data models or when discussing service agreements
-	between providers and consumers.</t>
+	<t hangText="Protocols vs. Representations of Virtual Networks">
+        <vspace blankLines="1"/>
+	  
+	Some of virtualization technology benefits from protocol
+	support either in the data or control plane. But there are
+	also management constructs, such as data models representing
+	virtual services or networks and data models useful in the
+	construction of such services.
+	<vspace blankLines="1"/>
+	
+	There are also conceptual definitions that may be needed when
+	constructing either protocols or data models or when
+	discussing service agreements between providers and
+	consumers.</t>
 	
       </list></t>
       
     </section>
 
-    <section title="Slicing in 5G Networks">
-
-      <t>Goals for the support of slicing in 5G relate to enabling a
-      separation of concerns, allow the creation of dedicated services
-      for special traffic types, to allow faster evolution of the
-      network mechanisms by easing gradual migration to new
-      functionality, and enabling faster time to market for new new
-      functionality.</t>
+    <section title="Virtualization in 5G Networks">
+      
+      <t>Goals for the support of virtualization in 5G relate to
+      both the use of virtualized network functions to build the
+      5G network, and to enabling the separation of different
+      user or traffic classes into separate network constructs
+      called slices.</t>
+      
+      <t>Slices enable a separation of concerns, allow the creation of
+      dedicated services for special traffic types, allow faster
+      evolution of the network mechanisms by easing gradual migration
+      to new functionality, and enable faster time to market for new
+      new functionality.</t>
       
       <t>In 5G, slice selection happens as a combination of settings
       in the User Equipment (UE) and the network. Settings in the UE
-      relate to chosen Access Point Name (APN), Dedicated Core Network
-      Indicator (DCN-ID) <xref target="TS-3GPP.23.401"/>, and, with
-      5G, a slice indicator (Network Slice Selection Assistance
-      Information or NSSAI) <xref target="TS-3GPP.23.501"/>. This
-      information is combined with the information configured for a
-      given subscriber, and the policies of the networks involved, and
-      ultimately a slice is selected.</t>
+      include, for instance, the Access Point Name (APN), Dedicated
+      Core Network Indicator (DCN-ID) <xref target="TS-3GPP.23.401"/>,
+      and, with 5G, a slice indicator (Network Slice Selection
+      Assistance Information or NSSAI) <xref
+      target="TS-3GPP.23.501"/>. This information is combined with the
+      information configured in the network for a given subscriber and
+      the policies of the networks involved. Ultimately, a slice is
+      selected.</t>
 
       <t>A 5G access network carries a user's connection attempt to
       the 5G core network and the Access Management Function (AMF)
-      function. This node collects information provided by the UE and
-      the subscriber database from home network, and consults the
-      Network Slice Selection Function (NSSF) to make a decision about
-      the desired slice. When the selection has been made, this may
-      also mean that the connection is moved to a different AMF;
-      enabling separate networks to have entirely different
-      network-level service.</t>
+      network function. This function collects information provided by
+      the UE and the subscriber database from home network, and
+      consults the Network Slice Selection Function (NSSF) to make a
+      decision of the slice selected for the user. When the selection
+      has been made, this may also mean that the connection is moved
+      to a different AMF; enabling separate networks to have entirely
+      different network-level service.</t>
       
       <t>The creation and orchestration of slices does not happen
       at this signalling plane, but rather the slices are separately
@@ -709,6 +728,34 @@
 	Getting this layered design right is crucial for our ability to
 	evolve a useful set of data models.</t>
 	
+	<t hangText="Ability to evolve modelling tools and mapping
+	systems"><vspace blankLines="1"/> The networks and their
+	models are complex, and mapping from high abstraction level
+	specifications to concrete network configurations is a hard
+	problem.<vspace blankLines="1"/>
+	
+	It is important that each of the components can evolve on its
+	own. It should be possible to plug in a new language that
+	represents network models better. Or replace a software
+	component that performs mapping between layers to one
+	that works better.<vspace blankLines="1"/>
+
+	While this should normally be possible, there's room to avoid
+	too tight binding between the different aspects of a
+	system. For instance, abstraction layers within software can
+	shield the software from being too closely tied with a
+	particular representation language.
+	<vspace blankLines="1"/>
+
+	Similarly, it would be an advantage to develop algorithms and
+	mapping approaches separately from the software that actually
+	does that, so that another piece of software could easily
+	follow the same guidelines and provide an alternate
+	implementation. Perhaps there's an opportunity for
+	specification work to focus more on processing rules
+	than protocol behaviours, for instance.
+	</t>
+	
 	<t hangText="General over specific"><vspace blankLines="1"/>
 	
 	In the quick pace of important developments, it is tempting to focus
@@ -817,19 +864,20 @@
 	<t>Mapping from high abstraction level specifications to concrete network
 	configurations.<vspace blankLines="1"/>
 
-	There is a lot of work on data models and templates at various levels and
-	in different representations. There are also many systems built to manage
-	these models and orchestrate network configuration. But the mapping of the
-	abstract models to concrete network configurations remains a hard problem,
-	and it certainly will need more work.<vspace blankLines="1"/>
+	There is a lot of work on data models and templates at various
+	levels and in different representations. There are also many
+	systems built to manage these models and orchestrate network
+	configuration. But the mapping of the abstract models to
+	concrete network configurations remains a hard problem, and it
+	certainly will need more work.<vspace blankLines="1"/>
 
 	There are even some questions about how to go about this. Is
 	it enough that we specify models, and leave the mapping to
 	"magic" of the software? Are the connections something that
-	different vendors compete in producing good products in? Or are
-	the mapping algorithms something that needs to be specified
-	together, and their ability to work with different types of
-	network equipment verified in some manner?	
+	different vendors compete in producing good products in? Or
+	are the mapping algorithms something that needs to be
+	specified together, and their ability to work with different
+	types of network equipment verified in some manner?
 	</t>
 	
 	<t>Cross-domain: A big problem is that we have little tools for
@@ -840,7 +888,7 @@
       <t>Finally, there is a question of where all this work should reside.
       There's an argument that IETF-based virtualization technologies deserve
       proper management tools, including data models.</t>
-
+      
       <t>And there's another argument that with the extensive use of
       virtualization technology, solutions that can manage many
       different networks should be general, and as such, potential
@@ -849,6 +897,12 @@
       that have been created for managing virtualization. It seems
       though that work on commonly usable data models at several
       layers of abstraction would be good work at the IETF.</t>
+
+      <t>Nevertheless, the IETF should understand where the broader
+      community is and what tools they use for what purpose, and try
+      to help by building on those components. Virtualization and slicing
+      are sometimes represented as issues needing a single solution. In reality, 
+      they are an interworking of a number of different tools.</t>
       
     </section>
     
