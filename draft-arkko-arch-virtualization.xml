@@ -339,17 +339,18 @@
       technologies currently under development that support
       virtualization in its various forms.</t>
 
-	 <section title="Lower layers">
+	 <section title="Selection of Virtual Instances">
 
 	   <t>Some L2 technology allows the identification of traffic
 	   belonging to a particular virtual network or
-	   connection. For instance, Ethernet VLAN tags. There are
-	   some IETF technologies that also allow similar
+	   connection. For instance, Ethernet VLAN tags.</t>
+
+	   <t>There are some IETF technologies that also allow similar
 	   identification of connections setup with the help of IETF
 	   protocols. For instance, Network Access Identifiers may
 	   identify a particular customer or virtual service within
 	   AAA, EAP or IKEv2 VPN connections.</t>
-	
+	   
       </section>
       
       <section title="Traffic Separation in VPNs">
@@ -470,10 +471,21 @@
 	  </list></t>
 	</list></t>
 
+	<t>A good example of work that is currently considered in the
+	TEAS WG is the set of models that detail earlier
+	IETF-developed topology models with both traffic engineering
+	information and connection to what services are running on top
+	of the network <xref
+	target="I-D.bryskin-teas-use-cases-sf-aware-topo-model"/> <xref
+	target="I-D.bryskin-teas-sf-aware-topo-model"/>. These models
+	enable reasoning about the state of the network with respect
+	to those services, and to set up services with optimal network
+	connectivity.</t>
+	
 	<t>Traffic engineering is a common requirement for many
 	routing systems, and also discussed, e.g., in the context of
 	LISP.</t>
-	  
+	
       </section>
       
       <section title="Service Chaining">
