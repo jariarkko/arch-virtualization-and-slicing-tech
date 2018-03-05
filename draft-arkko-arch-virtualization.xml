@@ -306,6 +306,13 @@
       at this signalling plane, but rather the slices are separately
       specified, created, and managed, typically with the help of
       an orchestrator function.</t>
+
+      <t>The exact mechanisms for doing this continue to evolve,
+      but in any case involve multiple layers of technology,
+      ranging from underlying virtualization software to
+      network component configuration mechanisms and models (often in YANG)
+      to higher abstraction level descriptions (often in TOSCA), to
+      orchestrator software.</t>
       
     </section>
     
@@ -535,7 +542,9 @@
 	formats, e.g., Topology and Orchestration Specification for
 	Cloud Applications (TOSCA) <xref target="TOSCA-1.0"/> <xref
 	target="TOSCA-Profile-1.1"/>, common in many higher abstract
-	level network service descriptions.)</t>
+	level network service descriptions. The ONAP open source project
+	plans to employ it for abstract mobile network slicing models,
+	for instance.)</t>
 	
 	<t>A service model is an abstract model, at a higher level
 	than network element or protocol configuration.  A service
